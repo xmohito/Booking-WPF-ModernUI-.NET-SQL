@@ -7,8 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\car.png" />
+    <None Remove="Images\car1.png" />
+    <None Remove="Images\eat.png" />
     <None Remove="Images\home.png" />
+    <None Remove="Images\key.png" />
+    <None Remove="Images\lock.png" />
     <None Remove="Images\pin.png" />
+    <None Remove="Images\sound.png" />
+    <None Remove="Images\user2.png" />
+    <None Remove="Images\wifi.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,12 +25,33 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\car1.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\eat.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\home.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\key.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\lock.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\pin.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Images\sound.png" />
+    <Resource Include="Images\user2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\wifi.png" />
   </ItemGroup>
 
 </Project>

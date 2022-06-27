@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <StackPanel>
+    <StackPanel Margin="50,0,0,0">
         <TextBlock Text="Odkrywaj"
                    Foreground="White"
                    FontSize="28"
@@ -21,8 +21,8 @@
                     Height="200">
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#5bc3ff" Offset="0.0"/>
-                        <GradientStop Color="#3aa0ff" Offset="1"/>
+                        <GradientStop Color="#F4717F" Offset="0.0"/>
+                        <GradientStop Color="#FF88A6" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
 
@@ -69,8 +69,8 @@
 
                 <Border.Background>
                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                        <GradientStop Color="#da3ff2" Offset="0.0"/>
-                        <GradientStop Color="#a60f79" Offset="1"/>
+                        <GradientStop Color="#42275a" Offset="0.0"/>
+                        <GradientStop Color="#734b6d" Offset="1"/>
                     </LinearGradientBrush>
                 </Border.Background>
                 <Grid>
@@ -122,14 +122,14 @@
                 
                 <Border Width="150"
                         Height="150"
-                        Background="#844eff"
+                        Background="#DE83A0"
                         CornerRadius="10"
                         Margin="0">
-                    <!--<Grid>
+                    <Grid>
 
                         <Image Height="70"
                            Width="70"
-                           Source="/Images/pin.png" Margin="40,15,40,65" RenderTransformOrigin="0.5,0.5">
+                           Source="/Images/car1.png" Margin="40,15,40,65" RenderTransformOrigin="0.5,0.5">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -142,15 +142,16 @@
                         </Image>
 
                         <StackPanel>
-                            <TextBlock Text="ul.Wiśniewska 46,&#x0a;Warszawa"
-                                       Margin="5,90,0,0"
+                            <TextBlock Text="Dobra lokalizacja"
+                                       HorizontalAlignment="Center"
+                                       Margin="5,100,0,0"
                                        Foreground="White"
                                        FontWeight="Normal"
                                        FontFamily="Segoe UI Semibold">
 
                             </TextBlock>
                         </StackPanel>
-                    </Grid>-->
+                    </Grid>
                     
                     
                    
@@ -159,16 +160,101 @@
                 </Border>
                 <Border Width="150"
                         Height="150"
-                        Background="#4e99ff"
-                        CornerRadius="10"/>
+                        Background="#DE89CE"
+                        CornerRadius="10">
+
+                    <Grid>
+
+                        <Image Height="70"
+                           Width="70"
+                           Source="/Images/wifi.png" Margin="40,15,40,65" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+
+                        </Image>
+
+                        <StackPanel>
+                            <TextBlock Text="Darmowy Internet"
+                                       HorizontalAlignment="Center"
+                                       Margin="5,100,0,0"
+                                       Foreground="White"
+                                       FontWeight="Normal"
+                                       FontFamily="Segoe UI Semibold">
+
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Border>
                 <Border Width="150"
                         Height="150"
-                        Background="#4eff91"
-                        CornerRadius="10"/>
+                        Background="#C58EDE"
+                        CornerRadius="10">
+                    <Grid>
+
+                        <Image Height="70"
+                           Width="70"
+                           Source="/Images/eat.png" Margin="40,15,40,65" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+
+                        </Image>
+
+                        <StackPanel>
+                            <TextBlock Text="Smaczne jedzenie"
+                                       HorizontalAlignment="Center"
+                                       Margin="5,100,0,0"
+                                       Foreground="White"
+                                       FontWeight="Normal"
+                                       FontFamily="Segoe UI Semibold">
+
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Border>
                 <Border Width="150"
                         Height="150"
-                        Background="#ecff43"
-                        CornerRadius="10"/>
+                        Background="#A08FDE"
+                        CornerRadius="10">
+                    <Grid>
+
+                        <Image Height="70"
+                           Width="70"
+                           Source="/Images/sound.png" Margin="40,15,40,65" RenderTransformOrigin="0.5,0.5">
+                            <Image.RenderTransform>
+                                <TransformGroup>
+                                    <ScaleTransform/>
+                                    <SkewTransform/>
+                                    <RotateTransform Angle="0"/>
+                                    <TranslateTransform/>
+                                </TransformGroup>
+                            </Image.RenderTransform>
+
+                        </Image>
+
+                        <StackPanel>
+                            <TextBlock Text="Spokojne miejsce"
+                                       HorizontalAlignment="Center"
+                                       Margin="5,100,0,0"
+                                       Foreground="White"
+                                       FontWeight="Normal"
+                                       FontFamily="Segoe UI Semibold">
+
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </Border>
 
             </StackPanel>
 

@@ -15,7 +15,7 @@
     <Window.DataContext>
         <viewModel:MainViewMode/>
     </Window.DataContext>
-    <Border Background="#FF28313B"
+    <Border Background="#3B3B3B"
             CornerRadius="20">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -40,7 +40,7 @@
 
 
 
-            <StackPanel Grid.Row="1">
+            <!--<StackPanel Grid.Row="1">
                 <RadioButton Content="Strona główna"
                              Height="50"
                              Foreground="White"
@@ -60,23 +60,96 @@
 
 
 
-            </StackPanel>
-            <TextBox Width="250"
+            </StackPanel>-->
+
+
+            <!--<TextBox Width="250"
                      Height="40"
                      VerticalContentAlignment="Center"
                      HorizontalAlignment="Left"
                      Margin="5"
                      Grid.Column="1"
-                     Style="{StaticResource ModernTextbox}"/>
+                     Style="{StaticResource ModernTextbox}"/>-->
+            <RadioButton Content="Strona główna"
+                         Grid.Column="1"
+                         Width="230"
+                         Height="40"
+                         HorizontalAlignment="Left"
+                         Margin="4,18,0,17"
+                         Foreground="White"
+                         Style="{StaticResource MenuButtonTheme}"
+                         IsChecked="True"
+                         Command="{Binding HomeViewCommand}"/>
 
-                    <ContentControl Grid.Row="1"
-                            Grid.Column="1"
-                            Margin="10"
-                            Content="{Binding CurrentView}"/>
+
+            <RadioButton Content="Zarezerwuj"
+                         Grid.Column="1"
+                         VerticalContentAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Width="230"
+                         Margin="234,18,0,17"
+                         Height="40"
+                         Foreground="White"
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding BookingViewCommand}"/>
+
+            <RadioButton Content="Panel administracyjny"
+                         Grid.Column="1"
+                         Width="230"
+                         VerticalContentAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Height="40"
+                         Foreground="White"
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding LoginViewCommand}" Margin="464,18,0,17"/>
+            <Button Grid.Column="1"
+                    Margin="644,495,26,10"
+                    BorderThickness="0"
+                    Content="Wyjście"
+                    Foreground="White"
+                    FontSize="10"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="50"
+                    Height="20" RenderTransformOrigin="0.547,0.583"
+                    Click="Button_Click" Grid.Row="1">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#EB5355"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#BD4345"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="50"
+                                Height="20"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
 
 
 
-                </Grid>
+
+            <ContentControl Grid.Row="1"
+                            Margin="22,10,10,10"
+                            Content="{Binding CurrentView}" Grid.ColumnSpan="2"/>
+
+
+
+        </Grid>
 
 
     </Border>
