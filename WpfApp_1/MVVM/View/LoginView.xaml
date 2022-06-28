@@ -6,34 +6,31 @@
              xmlns:local="clr-namespace:WpfApp_1.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="#1B1B1B">
+             Background="Transparent">
+    <Border Background="#292929" CornerRadius="25">
+        <Grid>
 
-    <Grid>
-
-        <StackPanel Width="250"
+            <StackPanel Width="250"
                     Grid.Row="2"
                     Orientation="Vertical"
                     Margin="0,35,0,0">
 
-            <Image Source="/Images/lock.png/"
-                   Width="100"
-                   Height="100"
-                   Margin="0,40,0,20"/>
-
-            <TextBlock
-                Text="Vip Apartaments"
+                <TextBlock
+                Text="VipApartaments"
+                FontSize="16"
+                Margin="0,100,0,0"
                 Foreground="White"
                 FontWeight="Medium"
                 HorizontalAlignment="Center"/>
 
-            <TextBlock
+                <TextBlock
                 Text="Nazwa użytkowanika"
                 Foreground="DarkGray"
                 FontWeight="Medium"
                 FontSize="12"
                 Margin="0,35,0,0"/>
 
-            <TextBox x:Name="txtUsername"
+                <TextBox x:Name="txtUsername"
                      FontSize="13"
                      FontWeight="Medium"
                      Foreground="White"
@@ -44,21 +41,21 @@
                      VerticalContentAlignment="Center"
                      Margin="0,5,0,0"
                      Padding="20,0,0,0">
-                <TextBox.Background>
-                    <ImageBrush ImageSource="/Images/user2.png"
+                    <TextBox.Background>
+                        <ImageBrush ImageSource="/Images/user2.png"
                                 Stretch="None"
                                 AlignmentX="Left"/>
-                </TextBox.Background>
-            </TextBox>
+                    </TextBox.Background>
+                </TextBox>
 
-            <TextBlock
+                <TextBlock
                 Text="Hasło"
                 Foreground="DarkGray"
                 FontWeight="Medium"
                 FontSize="12"
                 Margin="0,35,0,0"/>
 
-            <PasswordBox x:Name="txtPassword"
+                <PasswordBox x:Name="txtPassword"
                      FontSize="13"
                      FontWeight="Medium"
                      Foreground="White"
@@ -69,53 +66,60 @@
                      VerticalContentAlignment="Center"
                      Margin="0,5,0,0"
                      Padding="20,0,0,0">
-                <PasswordBox.Background>
-                    <ImageBrush ImageSource="/Images/key.png"
+                    <PasswordBox.Background>
+                        <ImageBrush ImageSource="/Images/key.png"
                                 Stretch="None"
                                 AlignmentX="Left"/>
-                </PasswordBox.Background>
-            </PasswordBox>
+                    </PasswordBox.Background>
+                </PasswordBox>
 
-            <Button x:Name="btnSubmit"
+                <Button x:Name="btnSubmit"
                     BorderThickness="0"
                     Content="Zaloguj"
                     Foreground="White"
                     FontSize="12"
                     Cursor="Hand"
                     Click="btnSubmit_Click">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Background" Value="#EB5355"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#56EB71"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="120"
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#EB5355"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#56EB71"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="120"
                                 Height="30"
                                 Margin="30"
                                 CornerRadius="9"
                                 Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center"
+                                <ContentPresenter VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                                
-                            </ContentPresenter>
 
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
+                                </ContentPresenter>
 
-
-
-            </Button>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
 
 
 
+                </Button>
 
-        </StackPanel>
-    </Grid>
+
+
+
+            </StackPanel>
+            <Image HorizontalAlignment="Center"
+                   Height="50"
+                   Width="50"
+                   Margin="0,75,0,0"
+                   VerticalAlignment="Top"
+                   Source="/MVVM/View/lock.png"/>
+        </Grid>
+    </Border>
 </UserControl>

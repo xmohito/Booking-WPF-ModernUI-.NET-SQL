@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <StackPanel Margin="50,0,0,0">
+    <Border CornerRadius="25">
+        <StackPanel Margin="50,0,0,0">
         <TextBlock Text="Odkrywaj"
                    Foreground="White"
                    FontSize="28"
@@ -260,4 +261,5 @@
 
         </StackPanel>
     </StackPanel>
+   </Border>
 </UserControl>

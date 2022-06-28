@@ -3,18 +3,249 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:WpfApp_1.MVVM.View"
+             xmlns:fa="http://schemas.fontawesome.io/icons/" 
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="#1B1B1B">
+             Background="Transparent">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <StackPanel>
-            <TextBlock Text="EKRAN BOOKINGU"
-                       Foreground="White"
-                       FontSize="30"
-                       TextAlignment="Center"
-                       Margin="0,50,0,0"/>
-        </StackPanel>
+        <!--left-->
+        <Border Background="#F4717F" Padding="30" CornerRadius="25,0,0,25">
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="/Images/client.png"
+                       Width="160"
+                       Height="160"
+                       Margin="0,0,0,40"/>
+                <TextBlock Text="Zarezerwuj pokój!"
+                           TextAlignment="Center"
+                           FontWeight="SemiBold"
+                           FontSize="28"
+                           Foreground="#363636"/>
+                <TextBlock TextWrapping="Wrap"
+                           FontSize="16"
+                           TextAlignment="Center"
+                           Foreground="#363636"
+                           Margin="0,20,0,20"
+                           Text="Wybierz termin, który Ci odpowiada."/>
+
+            </StackPanel>
+
+        </Border>
+
+        <!--input-->
+
+        <Border Grid.Column="1"
+                Padding="20"
+                Background="#ffffff"
+                CornerRadius="0 25 25 0"
+                MouseDown="Border_MouseDown">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="198" Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="68*"/>
+                    <ColumnDefinition Width="105*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Margin="0,0,0,32" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0" Text="Imię:" FontWeight="SemiBold" Margin="0,0,10,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Right">
+                    </TextBlock>
+                    <TextBlock Grid.Row="1" Text="Nazwisko:" FontWeight="SemiBold" Margin="0,0,10,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Right">
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="2" Text="Telefon:" FontWeight="SemiBold" Margin="0,0,10,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Right">
+                    </TextBlock>
+                    <TextBlock Grid.Row="3" Text="Email:" FontWeight="SemiBold" Margin="0,0,10,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Right">
+                    </TextBlock>
+                    <TextBlock Grid.Row="4" Text="Data urodzenia:" FontWeight="SemiBold" Margin="0,0,10,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Right">
+                    </TextBlock>
+
+
+
+
+                    <!--form-->
+                    <TextBox x:Name="txtName"
+                     Grid.Column="1"
+                     Grid.Row="0"
+                     FontSize="16"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2" 
+                     Padding="10,0,0,0"
+                        Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="txtSurname"
+                     Grid.Column="1"
+                     Grid.Row="1"
+                     FontSize="16"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2"
+                             Padding="10,0,0,0"
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="txtPhone"
+                     Grid.Column="1"
+                     Grid.Row="2"
+                     FontSize="16"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2" 
+                             Padding="10,0,0,0"
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="txtMail"
+                     Grid.Column="1"
+                     Grid.Row="3"
+                     FontSize="16"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2"
+                             Padding="10,0,0,0"
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="txtDate"
+                     Grid.Column="1"
+                     Grid.Row="4"
+                     FontSize="16"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2"
+                             Padding="10,0,0,0"
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <!--<TextBox x:Name="txtCheckIn"
+                     Grid.Column="1"
+                     Grid.Row="5"
+                     FontSize="16"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2" 
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="txtCheckOut"
+                     Grid.Column="1"
+                     Grid.Row="6"
+                     FontSize="16"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2" 
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>-->
+
+
+                </Grid>
+
+
+                <TextBlock  Text="Zameldowanie:" FontWeight="SemiBold" Margin="0,177,38,0"
+                               FontSize="16"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Right">
+                </TextBlock>
+                <TextBlock  Text="Wymeldowanie:" FontWeight="SemiBold" Margin="0,177,0,0"
+                               FontSize="16"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Right" Grid.Column="1">
+                </TextBlock>
+                <Calendar x:Name="CalendarCheckIn"
+                              DisplayDateStart="7/1/2022"
+                              IsTodayHighlighted="True" Margin="-22,203,4,-203"/>
+
+                <Calendar x:Name="CalendarCheckOut"
+                              DisplayDateStart="7/1/2022"
+                              IsTodayHighlighted="True" Margin="15,203,-25,-203" Grid.Column="1"/>
+
+
+                <Button 
+                    Margin="144,389,-25,-221"
+                    BorderThickness="0"
+                    Content="Zatwierdź"
+                    Foreground="White"
+                    FontSize="10"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="55"
+                    Height="30" RenderTransformOrigin="0.547,0.583" Grid.Column="1">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#EB5355"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#56EB71"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="55"
+                                Height="25"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                                </ContentPresenter>
+
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>
