@@ -12,20 +12,23 @@
         AllowsTransparency="True">
 
     <Border Background="#3B3B3B"
-            CornerRadius="20">
-    <Grid>
-            <Button x:Name="btnClose"
+            CornerRadius="20"
+            BorderBrush="#1C1C1C"
+            BorderThickness="1">
+        <Grid Initialized="Grid_Initialized">
+            <Button
+                    Margin="866,10,10,566"
                     BorderThickness="0"
                     Content="X"
                     Foreground="White"
-                    FontSize="15"
-                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold" Margin="880,10,10,560"
-                    Width="30"
-                    Height="30" Click="btnClose_Click">
-                
+                    FontSize="10"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="40"
+                    Height="20" RenderTransformOrigin="0.547,0.583"
+                    Click="btnClose_Click">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="Background" Value="#EB5355"/>
+                        <Setter Property="Background" Value="#5C5C5C"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#BD4345"/>
@@ -35,14 +38,52 @@
                 </Button.Style>
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Border Width="30"
-                                Height="30"
+                        <Border Width="40"
+                                Height="20"
                                 Margin="0"
-                                CornerRadius="100"
+                                CornerRadius="10"
                                 Background="{TemplateBinding Background}">
                             <ContentPresenter VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
-                                
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+
+            <!--insert btn-->
+            <Button
+                    Margin="252,518,574,38"
+                    BorderThickness="0"
+                    Content="Insert Record"
+                    Foreground="White"
+                    FontSize="12"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="90"
+                    Height="40" RenderTransformOrigin="0.547,0.583">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#5C5C5C"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#D49000"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="90"
+                                Height="40"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
                             </ContentPresenter>
 
                         </Border>
@@ -53,7 +94,258 @@
 
             </Button>
 
-    </Grid>
+            <!--update btn-->
+            <Button
+                    Margin="365,518,461,38"
+                    BorderThickness="0"
+                    Content="Update Record"
+                    Foreground="White"
+                    FontSize="12"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="90"
+                    Height="40" RenderTransformOrigin="0.547,0.583">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#5C5C5C"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#D49000"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="90"
+                                Height="40"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+
+
+            </Button>
+
+
+
+            <!--delete btn-->
+            <Button
+                    Margin="485,518,341,38"
+                    BorderThickness="0"
+                    Content="Delete Record"
+                    Foreground="White"
+                    FontSize="12"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="90"
+                    Height="40" RenderTransformOrigin="0.547,0.583">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#5C5C5C"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#D49000"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="90"
+                                Height="40"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+
+
+            </Button>
+
+
+            <!--clear data btn-->
+            <Button
+                    Margin="602,518,224,38"
+                    BorderThickness="0"
+                    Content="Clear Data"
+                    Foreground="White"
+                    FontSize="12"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="90"
+                    Height="40" RenderTransformOrigin="0.547,0.583">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#5C5C5C"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#D49000"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="90"
+                                Height="40"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+
+
+            </Button>
+
+            <!--form for editing-->
+
+            <TextBlock Text="Imię:"
+                       FontWeight="SemiBold"
+                       Margin="27,212,769,364"
+                       FontSize="16"
+                       Foreground="White"
+                       Height="20"
+                       Width="120">
+            </TextBlock>
+
+            <TextBlock Text="Nazwisko:"
+                       FontWeight="SemiBold"
+                       Margin="27,244,769,332"
+                       FontSize="16"
+                       Foreground="White"
+                       Height="20"
+                       Width="120">
+            </TextBlock>
+
+            <TextBlock Text="Telefon:"
+                       FontWeight="SemiBold"
+                       Margin="27,279,769,297"
+                       FontSize="16"
+                       Foreground="White"
+                       Height="20"
+                       Width="120">
+            </TextBlock>
+
+            <TextBlock Text="Email:"
+                       FontWeight="SemiBold"
+                       Margin="27,313,769,263"
+                       FontSize="16"
+                       Foreground="White"
+                       Height="20"
+                       Width="120">
+            </TextBlock>
+
+            <TextBlock Text="Data urodzenia:"
+                       FontWeight="SemiBold"
+                       Margin="27,347,769,229"
+                       FontSize="16"
+                       Foreground="White"
+                       Height="20"
+                       Width="120">
+            </TextBlock>
+
+            <!--Text Boxes-->
+            <TextBox HorizontalAlignment="Left"
+                     Margin="160,206,0,0"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     Width="192" Height="24"
+                     FontWeight="Medium"
+                     Foreground="White"
+                     CaretBrush="White"  
+                     BorderBrush="#D49000"
+                     Background="Transparent"
+                     BorderThickness="0,0,0,2">
+            </TextBox>
+            <TextBox HorizontalAlignment="Left"
+                     Margin="160,238,0,0"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     Width="192" Height="24"
+                     FontWeight="Medium"
+                     Foreground="White"
+                     CaretBrush="White"
+                     BorderBrush="#D49000"
+                     Background="Transparent"
+                     BorderThickness="0,0,0,2">
+            </TextBox>
+            <TextBox HorizontalAlignment="Left"
+                     Margin="160,273,0,0"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     Width="192" Height="24"
+                     FontWeight="Medium"
+                     Foreground="White"
+                     CaretBrush="White"
+                     BorderBrush="#D49000"
+                     Background="Transparent"
+                     BorderThickness="0,0,0,2">
+            </TextBox>
+
+            <TextBox HorizontalAlignment="Left"
+                     Margin="160,310,0,0"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     Width="192" Height="24"
+                     FontWeight="Medium"
+                     Foreground="White"
+                     CaretBrush="White"
+                     BorderBrush="#D49000"
+                     Background="Transparent"
+                     BorderThickness="0,0,0,2">
+            </TextBox>
+
+            <TextBox HorizontalAlignment="Left"
+                     Margin="160,344,0,0"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     Width="192" Height="24"
+                     FontWeight="Medium"
+                     Foreground="White"
+                     CaretBrush="White"
+                     BorderBrush="#D49000"
+                     Background="Transparent"
+                     BorderThickness="0,0,0,2">
+            </TextBox>
+            <DataGrid Width="500"
+                      Height="300" Margin="397,132,23,168"/>
+            <Label Content="Panel zarządzania rezerwacjami"
+                   HorizontalAlignment="Center"
+                   Margin="0,55,0,0"
+                   VerticalAlignment="Top"
+                   Foreground="White"
+                   FontWeight="SemiBold"
+                   FontSize="20"/>
+            <Label Content="VipApartaments"
+                   HorizontalAlignment="Left"
+                   Margin="10,2,0,0"
+                   VerticalAlignment="Top"
+                   Foreground="#828282"/>
+
+
+
+
+        </Grid>
 
 
     </Border>

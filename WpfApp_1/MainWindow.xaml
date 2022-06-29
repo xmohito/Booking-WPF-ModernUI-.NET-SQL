@@ -16,7 +16,9 @@
         <viewModel:MainViewMode/>
     </Window.DataContext>
     <Border Background="#3B3B3B"
-            CornerRadius="20">
+            CornerRadius="20"
+            BorderBrush="#1C1C1C"
+            BorderThickness="1">
         <Grid Initialized="Grid_Initialized">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
@@ -102,7 +104,7 @@
                          Style="{StaticResource MenuButtonTheme}"
                          Command="{Binding LoginViewCommand}" Margin="444,18,0,17"/>
             <Button
-                    Margin="670,5,10,45"
+                    Margin="666,10,10,45"
                     BorderThickness="0"
                     Content="X"
                     Foreground="White"

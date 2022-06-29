@@ -29,5 +29,10 @@ namespace WpfApp_1
             this.Close();
         }
 
+        private void Grid_Initialized(object sender, EventArgs e)
+        {
+            this.MouseLeftButtonDown += delegate { DragMove(); };
+        }
+
     }
 }
