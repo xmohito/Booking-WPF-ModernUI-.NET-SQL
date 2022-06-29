@@ -13,7 +13,6 @@
     <None Remove="Images\eat.png" />
     <None Remove="Images\home.png" />
     <None Remove="Images\key.png" />
-    <None Remove="Images\lock.png" />
     <None Remove="Images\pin.png" />
     <None Remove="Images\sound.png" />
     <None Remove="Images\user2.png" />
@@ -44,9 +43,6 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\key.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\lock.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\pin.png">

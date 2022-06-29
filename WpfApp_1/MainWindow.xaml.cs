@@ -25,14 +25,20 @@ namespace WpfApp_1
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void CloseBtn(object sender, RoutedEventArgs e)
         {
             this.Close();
+            //WindowState = WindowState.Minimized;
         }
 
         private void Grid_Initialized(object sender, EventArgs e)
         {
             this.MouseLeftButtonDown += delegate { DragMove(); };
+        }
+
+        private void MinimalizeBtn(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Minimized;
         }
     }
 }

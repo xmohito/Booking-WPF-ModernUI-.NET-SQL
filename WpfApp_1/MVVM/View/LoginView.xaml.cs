@@ -29,8 +29,6 @@ namespace WpfApp_1.MVVM.View
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-
-
             SqlConnection sqlCon = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Admin\Desktop\projekt\WpfApp_1\WpfApp_1\VipApartament.mdf;Integrated Security=True");
             try
             {

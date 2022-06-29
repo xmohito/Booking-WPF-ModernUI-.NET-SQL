@@ -104,18 +104,18 @@
                          Style="{StaticResource MenuButtonTheme}"
                          Command="{Binding LoginViewCommand}" Margin="444,18,0,17"/>
             <Button
-                    Margin="666,10,10,45"
+                    Margin="693,10,10,50"
                     BorderThickness="0"
-                    Content="X"
                     Foreground="White"
                     FontSize="10"
                     Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
-                    Width="40"
-                    Height="20" RenderTransformOrigin="0.547,0.583"
-                    Click="Button_Click" Grid.Column="1">
+                    Width="15"
+                    Height="15" RenderTransformOrigin="0.547,0.583"
+                    Click="CloseBtn" Grid.Column="1"
+                    Content="X">
                 <Button.Style>
                     <Style TargetType="Button">
-                        <Setter Property="Background" Value="#5C5C5C"/>
+                        <Setter Property="Background" Value="#808080"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#BD4345"/>
@@ -125,10 +125,47 @@
                 </Button.Style>
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
-                        <Border Width="40"
-                                Height="20"
+                        <Border Width="15"
+                                Height="15"
                                 Margin="0"
-                                CornerRadius="10"
+                                CornerRadius="100"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+            <Button
+                    Margin="673,10,30,50"
+                    BorderThickness="0"
+                    Foreground="White"
+                    FontSize="15"
+                    Cursor="Hand" FontWeight="Normal" FontFamily="Bahnschrift SemiBold"
+                    Width="15"
+                    Height="15" RenderTransformOrigin="0.547,0.583"
+                    Click="MinimalizeBtn" Grid.Column="1"
+                    Content="-">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#808080"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#DB732E"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="15"
+                                Height="15"
+                                Margin="0"
+                                CornerRadius="100"
                                 Background="{TemplateBinding Background}">
                             <ContentPresenter VerticalAlignment="Center"
                                               HorizontalAlignment="Center">
@@ -147,6 +184,7 @@
             <ContentControl Grid.Row="1"
                             Margin="22,10,10,10"
                             Content="{Binding CurrentView}" Grid.ColumnSpan="2"/>
+
 
 
 
