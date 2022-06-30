@@ -48,9 +48,10 @@
                     <ColumnDefinition Width="68*"/>
                     <ColumnDefinition Width="105*"/>
                 </Grid.ColumnDefinitions>
-                <Grid Margin="0,0,0,32" Grid.ColumnSpan="2">
+                <Grid Grid.ColumnSpan="2" Margin="0,-10,0,-39">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="2.333"/>
+                        <ColumnDefinition Width="147.667"/>
                         <ColumnDefinition Width="150"/>
                     </Grid.ColumnDefinitions>
 
@@ -65,39 +66,58 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBlock Grid.Row="0" Text="Imię:" FontWeight="SemiBold" Margin="0,0,10,0"
+                    <TextBlock Text="Imię:" FontWeight="SemiBold" Margin="103,0,0,0"
                                FontSize="16"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Right">
-                    </TextBlock>
-                    <TextBlock Grid.Row="1" Text="Nazwisko:" FontWeight="SemiBold" Margin="0,0,10,0"
+                               HorizontalAlignment="Left" Grid.Column="1"/>
+                    <TextBlock Grid.Row="1" Text="Nazwisko:" FontWeight="SemiBold" Margin="65,0,0,0"
                                FontSize="16"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Right">
+                               HorizontalAlignment="Left" Grid.Column="1">
                     </TextBlock>
 
-                    <TextBlock Grid.Row="2" Text="Telefon:" FontWeight="SemiBold" Margin="0,0,10,0"
+                    <TextBlock Grid.Row="2" Text="Telefon:" FontWeight="SemiBold" Margin="81,0,0,0"
                                FontSize="16"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Right">
+                               HorizontalAlignment="Left" Grid.Column="1">
                     </TextBlock>
-                    <TextBlock Grid.Row="3" Text="Email:" FontWeight="SemiBold" Margin="0,0,10,0"
+                    <TextBlock Grid.Row="3" Text="Email:" FontWeight="SemiBold" Margin="95,0,0,0"
                                FontSize="16"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Right">
+                               HorizontalAlignment="Left" Grid.Column="1">
                     </TextBlock>
-                    <TextBlock Grid.Row="4" Text="Data urodzenia:" FontWeight="SemiBold" Margin="0,0,10,0"
+                    <TextBlock Grid.Row="4" Text="Data urodzenia:" FontWeight="SemiBold" Margin="24,0,0,0"
                                FontSize="16"
                                VerticalAlignment="Center"
-                               HorizontalAlignment="Right">
+                               HorizontalAlignment="Left" Grid.Column="1">
                     </TextBlock>
+                    <TextBlock Grid.Row="5" Text="Zameldowanie:" FontWeight="SemiBold" Margin="0,31,10,0"
+                               FontSize="16"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Right" Grid.Column="1">
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="6" Text="Wymeldowanie:" FontWeight="SemiBold" Margin="0,10,10,0"
+                               FontSize="16"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Right" Grid.Column="1">
+                    </TextBlock>
+
+                    <TextBlock x:Name="textBlock10" Grid.Row="6" Text="" FontWeight="SemiBold" Margin="0,39,13,0"
+                               FontSize="10"
+                               Foreground="#F4717F"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Right" Grid.Column="2" Width="137">
+                    </TextBlock>
+
+
 
 
 
 
                     <!--form-->
                     <TextBox x:Name="txtName"
-                     Grid.Column="1"
+                     Grid.Column="2"
                      Grid.Row="0"
                      FontSize="14"
                      FontWeight="Medium"
@@ -110,7 +130,7 @@
                      VerticalContentAlignment="Center">
                     </TextBox>
                     <TextBox x:Name="txtSurname"
-                     Grid.Column="1"
+                     Grid.Column="2"
                      Grid.Row="1"
                      FontSize="14"
                      FontWeight="Medium"
@@ -123,7 +143,7 @@
                      VerticalContentAlignment="Center">
                     </TextBox>
                     <TextBox x:Name="txtPhone"
-                     Grid.Column="1"
+                     Grid.Column="2"
                      Grid.Row="2"
                      FontSize="14"
                      FontWeight="Medium"
@@ -136,7 +156,7 @@
                      VerticalContentAlignment="Center">
                     </TextBox>
                     <TextBox x:Name="txtMail"
-                     Grid.Column="1"
+                     Grid.Column="2"
                      Grid.Row="3"
                      FontSize="14"
                      FontWeight="Medium"
@@ -149,7 +169,7 @@
                      VerticalContentAlignment="Center">
                     </TextBox>
                     <TextBox x:Name="txtDate"
-                     Grid.Column="1"
+                     Grid.Column="2"
                      Grid.Row="4"
                      FontSize="14"
                      FontWeight="Medium"
@@ -161,6 +181,33 @@
                      Height="28"
                      VerticalContentAlignment="Center">
                     </TextBox>
+
+                    <DatePicker x:Name="datePicker1" Grid.Column="2"
+                                Grid.Row="5"
+                                FirstDayOfWeek="Monday"
+                                Margin="0,30,0,0">
+
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type DatePickerTextBox}">
+                                <Setter Property="Text" Value="Data przyjazdu" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="IsReadOnly" Value="True"/>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                    <DatePicker x:Name="datePicker2" Grid.Column="2"
+                                Grid.Row="6"
+                                FirstDayOfWeek="Monday"
+                                 Margin="0,10,0,22">
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type DatePickerTextBox}">
+                                <Setter Property="Text" Value="Data wyjazdu" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="IsReadOnly" Value="True"/>
+                            </Style>
+                        </DatePicker.Resources>
+
+                    </DatePicker>
                     <!--<TextBox x:Name="txtCheckIn"
                      Grid.Column="1"
                      Grid.Row="5"
@@ -190,34 +237,19 @@
                 </Grid>
 
 
-                <TextBlock  Text="Zameldowanie:" FontWeight="SemiBold" Margin="0,177,38,0"
-                               FontSize="16"
-                               VerticalAlignment="Top"
-                               HorizontalAlignment="Right">
-                </TextBlock>
-                <TextBlock  Text="Wymeldowanie:" FontWeight="SemiBold" Margin="0,177,0,0"
-                               FontSize="16"
-                               VerticalAlignment="Top"
-                               HorizontalAlignment="Right" Grid.Column="1">
-                </TextBlock>
-                <Calendar x:Name="CalendarCheckIn"
-                              DisplayDateStart="7/1/2022"
-                              IsTodayHighlighted="True" Margin="-22,203,4,-203"/>
 
-                <Calendar x:Name="CalendarCheckOut"
-                              DisplayDateStart="7/1/2022"
-                              IsTodayHighlighted="True" Margin="15,203,-25,-203" Grid.Column="1"/>
+
 
 
                 <Button 
-                    Margin="144,389,-25,-221"
+                    Margin="138,378,-43,-210"
                     BorderThickness="0"
                     Content="Zatwierdź"
                     Foreground="White"
                     FontSize="10"
                     Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
                     Width="55"
-                    Height="30" RenderTransformOrigin="0.547,0.583" Grid.Column="1">
+                    Height="30" RenderTransformOrigin="0.547,0.583" Click="Button_Click" Grid.Column="1">
                     <Button.Style>
                         <Style TargetType="Button">
                             <Setter Property="Background" Value="#EB5355"/>
@@ -244,8 +276,100 @@
                         </ControlTemplate>
                     </Button.Template>
 
+
+
                 </Button>
+
+
             </Grid>
+
         </Border>
+        <Grid Height="100"
+              Width="300" Grid.Column="1" Margin="75,280,75,70">
+            <Border Background="#F4717F" CornerRadius="20"/>
+
+            <StackPanel Margin="61,30,-61,-30">
+                <RadioButton GroupName="One" IsChecked="True" Content="Standard" FontWeight="SemiBold" Checked="RadioButton_Checked"/>
+                <RadioButton GroupName="One" IsChecked="False" Content="Superior" FontWeight="SemiBold" Checked="RadioButton_Checked_1"/>
+                <RadioButton GroupName="One" IsChecked="False" Content="Deluxe" FontWeight="SemiBold" Checked="RadioButton_Checked_2"/>
+            </StackPanel>
+
+
+            <TextBlock Text="Apartament:"  
+                           Height="20"
+                           FontSize="16"
+                           FontWeight="SemiBold" Margin="12,9,190,71" />
+            <TextBlock Text="Cena:"  
+                           Height="20"
+                           FontSize="16"
+                           FontWeight="SemiBold" Margin="144,9,58,71" />
+            <TextBlock x:Name="price"
+                            Text="- - - - zł"  
+                           Height="20"
+                           FontSize="16"
+                           FontWeight="SemiBold" Margin="178,30,24,50" />
+
+            <Button 
+                    BorderThickness="0"
+                    Content="Sprawdź cenę"
+                    Foreground="White"
+                    FontSize="9"
+                    Cursor="Hand" FontWeight="SemiBold" FontFamily="Segoe UI Semibold"
+                    Width="60"
+                    Height="15" RenderTransformOrigin="0.547,0.583" Margin="221,77,19,8">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#858585"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#6B6B6B"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="60"
+                                Height="15"
+                                Margin="0"
+                                CornerRadius="5"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+
+
+            </Button>
+
+        </Grid>
+        <!--<Grid Margin="31,264,225,42" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="85*"/>
+                <ColumnDefinition Width="109*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Apartament:"  
+                           Height="20"
+                           Width="200"
+                           FontSize="16"
+                           FontWeight="SemiBold" Margin="4,10,-10,114" Grid.ColumnSpan="2" />
+            <CheckBox Content="standard" FontWeight="SemiBold"
+                     Height="20" Margin="12,36,-97,88" Grid.Column="1" />
+            <CheckBox Content="superior"
+                     Height="20" FontWeight="SemiBold" Margin="12,86,-97,38" Grid.Column="1"/>
+            <CheckBox Content="deluxe"
+                     Height="20"  FontWeight="SemiBold" Margin="12,61,-97,63" Grid.Column="1"/>
+        </Grid>-->
+
+
+
+
     </Grid>
-</UserControl>
+
+
+</UserControl> 

@@ -356,8 +356,16 @@
                      BorderThickness="0,0,0,3"
                      FontSize="18">
             </TextBox>
+            <ComboBox x:Name="combobox"
+                      Margin="575,445,256,129"
+                      Width="87" Height="24"
+                      ItemsSource="{Binding}"
+                      SelectionChanged="combobox_SelectionChanged">
+                
+            </ComboBox>
             <DataGrid x:Name="datagrid" Width="500"
-                      Height="300" Margin="397,132,23,168"/>
+                      Height="300" Margin="397,132,23,168"
+                      IsReadOnly="True"/>
             <Label Content="Panel zarządzania rezerwacjami"
                    HorizontalAlignment="Center"
                    Margin="0,55,0,0"
