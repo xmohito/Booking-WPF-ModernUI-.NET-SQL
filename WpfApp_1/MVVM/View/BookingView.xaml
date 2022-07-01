@@ -289,9 +289,9 @@
             <Border Background="#F4717F" CornerRadius="20"/>
 
             <StackPanel Margin="61,30,-61,-30">
-                <RadioButton GroupName="One" IsChecked="True" Content="Standard" FontWeight="SemiBold" Checked="RadioButton_Checked"/>
-                <RadioButton GroupName="One" IsChecked="False" Content="Superior" FontWeight="SemiBold" Checked="RadioButton_Checked_1"/>
-                <RadioButton GroupName="One" IsChecked="False" Content="Deluxe" FontWeight="SemiBold" Checked="RadioButton_Checked_2"/>
+                <RadioButton x:Name="btnStandard" GroupName="One"  IsChecked="False" Content="Standard" FontWeight="SemiBold" Checked="Standard_Checked"/>
+                <RadioButton x:Name="btnSuperior" GroupName="One" IsChecked="False" Content="Superior" FontWeight="SemiBold" Checked="Superior_Checked"/>
+                <RadioButton x:Name="btnDeluxe" GroupName="One" IsChecked="False" Content="Deluxe" FontWeight="SemiBold" Checked="Deluxe_Checked"/>
             </StackPanel>
 
 
@@ -303,11 +303,11 @@
                            Height="20"
                            FontSize="16"
                            FontWeight="SemiBold" Margin="144,9,58,71" />
-            <TextBlock x:Name="price"
-                            Text="- - - - zł"  
+            <TextBlock x:Name="showPrice"
+                           Text="- - - -"
                            Height="20"
                            FontSize="16"
-                           FontWeight="SemiBold" Margin="178,30,24,50" />
+                           FontWeight="SemiBold" Margin="178,30,0,50" />
 
             <Button 
                     BorderThickness="0"
@@ -316,7 +316,7 @@
                     FontSize="9"
                     Cursor="Hand" FontWeight="SemiBold" FontFamily="Segoe UI Semibold"
                     Width="60"
-                    Height="15" RenderTransformOrigin="0.547,0.583" Margin="221,77,19,8">
+                    Height="15" RenderTransformOrigin="0.547,0.583" Margin="221,77,19,8" Click="checkPrice">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#858585"/>

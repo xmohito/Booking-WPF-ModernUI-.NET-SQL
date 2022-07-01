@@ -24,6 +24,22 @@ namespace WpfApp_1.MVVM.View
         public BookingView()
         {
             InitializeComponent();
+
+
+            //if (btnStandard.IsPressed == true)
+            //{
+            //    int price = 500;
+            //}
+            //else if (btnSuperior.IsChecked == true)
+            //{
+            //    int price = 500;
+            //}
+            //else if (btnSuperior.IsChecked == true)
+            //{
+            //    int price = 700;
+            //}
+           
+
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -31,7 +47,10 @@ namespace WpfApp_1.MVVM.View
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+
+
+        public void Button_Click(object sender, RoutedEventArgs e)
         {
             // This block sets the TextBlock to a sensible default if dates haven't been picked
             if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
@@ -45,31 +64,129 @@ namespace WpfApp_1.MVVM.View
             DateTime start = datePicker1.SelectedDate.Value.Date;
             DateTime finish = datePicker2.SelectedDate.Value.Date;
             TimeSpan difference = finish.Subtract(start);
+
+
             int daysCount = Int32.Parse(difference.TotalDays.ToString());
             if (daysCount > 0)
             {
                 textBlock10.Text = difference.TotalDays.ToString();
+                
             }
             else
             {
                 textBlock10.Text = "* Wybierz daty poprawnie";
             }
 
+
+
+         
+
+
+
+
+
+
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        public void Standard_Checked(object sender, RoutedEventArgs e)
         {
+            if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
+            {
+                showPrice.Text = "Wybierz termin";
+                return;
+            }
+
+            DateTime start = datePicker1.SelectedDate.Value.Date;
+            DateTime finish = datePicker2.SelectedDate.Value.Date;
+            TimeSpan difference = finish.Subtract(start);
+
+
+            int daysCount = Int32.Parse(difference.TotalDays.ToString());
+            int price = 300;
+            int finalPrice = price * daysCount;
+            if (daysCount > 0)
+            {
+                showPrice.Text = finalPrice.ToString() + " zł";
+
+            }
+            else
+            {
+                showPrice.Text = "- - - -";
+            }
+        }
+
+        public void Superior_Checked(object sender, RoutedEventArgs e)
+        {
+            if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
+            {
+                showPrice.Text = "Wybierz termin";
+                return;
+            }
+
+            DateTime start = datePicker1.SelectedDate.Value.Date;
+            DateTime finish = datePicker2.SelectedDate.Value.Date;
+            TimeSpan difference = finish.Subtract(start);
+
+
+            int daysCount = Int32.Parse(difference.TotalDays.ToString());
+            int price = 500;
+            int finalPrice = price * daysCount;
+            if (daysCount > 0)
+            {
+                showPrice.Text = finalPrice.ToString() + " zł";
+
+            }
+            else
+            {
+                showPrice.Text = "- - - -";
+            }
 
         }
 
-        private void RadioButton_Checked_1(object sender, RoutedEventArgs e)
+        public void Deluxe_Checked(object sender, RoutedEventArgs e)
         {
+            if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
+            {
+                showPrice.Text = "Wybierz termin";
+                return;
+            }
 
+            DateTime start = datePicker1.SelectedDate.Value.Date;
+            DateTime finish = datePicker2.SelectedDate.Value.Date;
+            TimeSpan difference = finish.Subtract(start);
+
+
+            int daysCount = Int32.Parse(difference.TotalDays.ToString());
+            int price = 700;
+            int finalPrice = price * daysCount;
+            if (daysCount > 0)
+            {
+                showPrice.Text = finalPrice.ToString() +" zł";
+
+            }
+            else
+            {
+                showPrice.Text = "- - - -";
+            }
         }
 
-        private void RadioButton_Checked_2(object sender, RoutedEventArgs e)
+        public void checkPrice(object sender, RoutedEventArgs e)
         {
-
+            if (btnStandard.IsChecked == true)
+            {
+                btnStandard.IsChecked = false;
+                btnStandard.IsChecked = true;
+            }
+            else if (btnSuperior.IsChecked == true)
+            {
+                btnSuperior.IsChecked = false;
+                btnSuperior.IsChecked = true;
+            }
+            else if (btnDeluxe.IsChecked == true)
+            {
+                btnDeluxe.IsChecked = false;
+                btnDeluxe.IsChecked = true;
+            }
         }
     }
     }
