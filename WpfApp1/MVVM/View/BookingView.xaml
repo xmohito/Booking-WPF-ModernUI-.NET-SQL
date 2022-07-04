@@ -1,0 +1,382 @@
+﻿<UserControl x:Class="WpfApp_1.MVVM.View.BookingView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:fa="http://schemas.fontawesome.io/icons/" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="Transparent">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--left-->
+        <Border Background="#F4717F" Padding="30" CornerRadius="25,0,0,25">
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="/Images/client.png"
+                       Width="160"
+                       Height="160"
+                       Margin="0,0,0,40"/>
+                <TextBlock Text="Zarezerwuj pokój!"
+                           TextAlignment="Center"
+                           FontWeight="SemiBold"
+                           FontSize="28"
+                           Foreground="#363636"/>
+                <TextBlock TextWrapping="Wrap"
+                           FontSize="16"
+                           TextAlignment="Center"
+                           Foreground="#363636"
+                           Margin="0,20,0,20"
+                           Text="Wybierz termin, który Ci odpowiada."/>
+
+            </StackPanel>
+
+        </Border>
+
+        <!--input-->
+
+        <Border Grid.Column="1"
+                Padding="20"
+                Background="#ffffff"
+                CornerRadius="0 25 25 0"
+                MouseDown="Border_MouseDown">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="198" Margin="0,20,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="68*"/>
+                    <ColumnDefinition Width="105*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.ColumnSpan="2" Margin="0,-10,0,-39">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2.333"/>
+                        <ColumnDefinition Width="147.667"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Imię:" FontWeight="SemiBold" Margin="103,0,0,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left" Grid.Column="1"/>
+                    <TextBlock Grid.Row="1" Text="Nazwisko:" FontWeight="SemiBold" Margin="65,0,0,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left" Grid.Column="1">
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="2" Text="Telefon:" FontWeight="SemiBold" Margin="81,0,0,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left" Grid.Column="1">
+                    </TextBlock>
+                    <TextBlock Grid.Row="3" Text="Email:" FontWeight="SemiBold" Margin="95,0,0,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left" Grid.Column="1">
+                    </TextBlock>
+                    <TextBlock Grid.Row="4" Text="Data urodzenia:" FontWeight="SemiBold" Margin="24,0,0,0"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left" Grid.Column="1">
+                    </TextBlock>
+                    <TextBlock Grid.Row="5" Text="Zameldowanie:" FontWeight="SemiBold" Margin="0,31,10,0"
+                               FontSize="16"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Right" Grid.Column="1">
+                    </TextBlock>
+
+                    <TextBlock Grid.Row="6" Text="Wymeldowanie:" FontWeight="SemiBold" Margin="0,10,10,0"
+                               FontSize="16"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Right" Grid.Column="1">
+                    </TextBlock>
+
+                    <TextBlock x:Name="textBlock10" Grid.Row="6" Text="" FontWeight="SemiBold" Margin="0,39,13,0"
+                               FontSize="10"
+                               Foreground="#F4717F"
+                               VerticalAlignment="Top"
+                               HorizontalAlignment="Right" Grid.Column="2" Width="137">
+                    </TextBlock>
+
+
+
+
+
+
+                    <!--form-->
+                    <TextBox x:Name="txtName"
+                     Grid.Column="2"
+                     Grid.Row="0"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2" 
+                     Padding="10,0,0,0"
+                        Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="txtSurname"
+                     Grid.Column="2"
+                     Grid.Row="1"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2"
+                             Padding="10,0,0,0"
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="txtPhone"
+                     Grid.Column="2"
+                     Grid.Row="2"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2" 
+                             Padding="10,0,0,0"
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="txtMail"
+                     Grid.Column="2"
+                     Grid.Row="3"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2"
+                             Padding="10,0,0,0"
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="txtDate"
+                     Grid.Column="2"
+                     Grid.Row="4"
+                     FontSize="14"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2"
+                             Padding="10,0,0,0"
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+
+                    <DatePicker x:Name="datePicker1" Grid.Column="2"
+                                Grid.Row="5"
+                                FirstDayOfWeek="Monday"
+                                Margin="0,30,0,0">
+
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type DatePickerTextBox}">
+                                <Setter Property="Text" Value="Data przyjazdu" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="IsReadOnly" Value="True"/>
+                            </Style>
+                        </DatePicker.Resources>
+                    </DatePicker>
+                    <DatePicker x:Name="datePicker2" Grid.Column="2"
+                                Grid.Row="6"
+                                FirstDayOfWeek="Monday"
+                                 Margin="0,10,0,22">
+                        <DatePicker.Resources>
+                            <Style TargetType="{x:Type DatePickerTextBox}">
+                                <Setter Property="Text" Value="Data wyjazdu" />
+                                <Setter Property="FontWeight" Value="Bold"/>
+                                <Setter Property="IsReadOnly" Value="True"/>
+                            </Style>
+                        </DatePicker.Resources>
+
+                    </DatePicker>
+                    <!--<TextBox x:Name="txtCheckIn"
+                     Grid.Column="1"
+                     Grid.Row="5"
+                     FontSize="16"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2" 
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>
+                    <TextBox x:Name="txtCheckOut"
+                     Grid.Column="1"
+                     Grid.Row="6"
+                     FontSize="16"
+                     FontWeight="Medium"
+                     Foreground="Black"
+                     CaretBrush="Black"
+                     BorderBrush="#F4717F"
+                     BorderThickness="0,0,0,2" 
+                     Height="28"
+                     VerticalContentAlignment="Center">
+                    </TextBox>-->
+
+
+                </Grid>
+
+
+
+
+
+
+                <Button 
+                    Margin="162,409,-67,-241"
+                    BorderThickness="0"
+                    Content="Zatwierdź"
+                    Foreground="White"
+                    FontSize="10"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="55"
+                    Height="30" RenderTransformOrigin="0.5,0.5" Click="Button_Click" Grid.Column="1">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#EB5355"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter Property="Background" Value="#56EB71"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Width="55"
+                                Height="25"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                                <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                                </ContentPresenter>
+
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+
+
+                </Button>
+
+
+            </Grid>
+
+        </Border>
+        <Grid Height="100"
+              Width="300" Grid.Column="1" Margin="75,280,75,70">
+            <Border Background="#F4717F" CornerRadius="20" Margin="0,-20,0,20"/>
+
+            <StackPanel Margin="61,15,-61,-30">
+                <RadioButton x:Name="btnStandard" GroupName="One"  IsChecked="False" Content="Standard" FontWeight="SemiBold" Checked="Standard_Checked"/>
+                <RadioButton x:Name="btnSuperior" GroupName="One" IsChecked="False" Content="Superior" FontWeight="SemiBold" Checked="Superior_Checked"/>
+                <RadioButton x:Name="btnDeluxe" GroupName="One" IsChecked="False" Content="Deluxe" FontWeight="SemiBold" Checked="Deluxe_Checked"/>
+            </StackPanel>
+
+
+            <TextBlock Text="Apartament:"  
+                           Height="20"
+                           FontSize="16"
+                           FontWeight="SemiBold" Margin="10,-8,192,88" />
+            <TextBlock Text="Cena:"  
+                           Height="20"
+                           FontSize="16"
+                           FontWeight="SemiBold" Margin="144,-25,58,71" />
+            <TextBlock x:Name="showPrice"
+                           Text="- - - -"
+                           Height="20"
+                           FontSize="16"
+                           FontWeight="SemiBold" Margin="178,0,0,50" />
+
+            <Button 
+                    BorderThickness="0"
+                    Content="Sprawdź cenę"
+                    Foreground="White"
+                    FontSize="9"
+                    Cursor="Hand" FontWeight="SemiBold" FontFamily="Segoe UI Semibold"
+                    Width="60"
+                    Height="15" RenderTransformOrigin="0.547,0.583" Margin="221,56,19,29" Click="checkPrice">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#858585"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#6B6B6B"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="60"
+                                Height="15"
+                                Margin="0"
+                                CornerRadius="5"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+
+
+            </Button>
+
+        </Grid>
+
+        <Grid Height="50"
+              Width="300" Margin="75,368,75,32" Grid.Column="1"/>
+        <Border Height="50"
+                Width="300" Grid.Column="1" Margin="75,368,75,32"
+                Background="#F4717F"
+                CornerRadius="10">
+
+
+        </Border>
+        <TextBlock Text="Rodzaj płatności:"  
+                           Height="20"
+                           FontSize="16"
+                           FontWeight="SemiBold" Margin="133,372,169,58" Grid.Column="1" />
+        <RadioButton x:Name="btnByCard" Checked="payByCash" Height="15" Width="100" GroupName="One"  IsChecked="False" Content="Gotówką" FontWeight="SemiBold" Grid.Column="1" Margin="107,393,243,42"/>
+        <RadioButton x:Name="btnByCash"  Checked ="payByCard" Height="15" Width="100"  GroupName="One" IsChecked="False" Content="Kartą " FontWeight="SemiBold" Grid.Column="1" Margin="212,393,138,42"/>
+
+        <Label x:Name ="ErrorLabel" Content="sssss"
+               Foreground="Red"
+               Height="30"
+               Width="200" Grid.Column="1" Margin="288,418,-38,2">
+           
+        </Label>
+
+
+
+
+
+    </Grid>
+
+
+</UserControl> 

@@ -1,0 +1,196 @@
+﻿<Window x:Class="WpfApp_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp_1"
+        xmlns:viewModel="clr-namespace:WpfApp_1.MVVM.ViewModel"
+        mc:Ignorable="d"
+        Title="Booking" Height="600" Width="920"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Window.DataContext>
+        <viewModel:MainViewMode/>
+    </Window.DataContext>
+    <Border Background="#3B3B3B"
+            CornerRadius="20"
+            BorderBrush="#1C1C1C"
+            BorderThickness="1">
+        <Grid Initialized="Grid_Initialized">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+
+
+            <TextBlock Text="VipApartaments"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="White"
+                   FontSize="20"/>
+
+
+
+            <!--<StackPanel Grid.Row="1">
+                <RadioButton Content="Strona główna"
+                             Height="50"
+                             Foreground="White"
+                             Style="{StaticResource MenuButtonTheme}"
+                             IsChecked="True"
+                             Command="{Binding HomeViewCommand}"/>
+                <RadioButton Content="Zarezerwuj"
+                             Height="50"
+                             Foreground="White"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding BookingViewCommand}"/>
+                <RadioButton Content="Panel administracyjny"
+                             Height="50"
+                             Foreground="White"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding LoginViewCommand}"/>
+
+
+
+            </StackPanel>-->
+
+
+            <!--<TextBox Width="250"
+                     Height="40"
+                     VerticalContentAlignment="Center"
+                     HorizontalAlignment="Left"
+                     Margin="5"
+                     Grid.Column="1"
+                     Style="{StaticResource ModernTextbox}"/>-->
+            <RadioButton Content="Strona główna"
+                         Grid.Column="1"
+                         Width="220 "
+                         Height="40"
+                         HorizontalAlignment="Left"
+                         Margin="4,18,0,17"
+                         Foreground="White"
+                         Style="{StaticResource MenuButtonTheme}"
+                         IsChecked="True"
+                         Command="{Binding HomeViewCommand}"/>
+
+
+            <RadioButton Content="Zarezerwuj"
+                         Grid.Column="1"
+                         VerticalContentAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Width="220"
+                         Margin="224,18,0,17"
+                         Height="40"
+                         Foreground="White"
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding BookingViewCommand}"/>
+
+            <RadioButton Content="Panel administracyjny"
+                         Grid.Column="1"
+                         Width="220"
+                         VerticalContentAlignment="Center"
+                         HorizontalAlignment="Left"
+                         Height="40"
+                         Foreground="White"
+                         Style="{StaticResource MenuButtonTheme}"
+                         Command="{Binding LoginViewCommand}" Margin="444,18,0,17"/>
+            <Button
+                    Margin="693,10,10,50"
+                    BorderThickness="0"
+                    Foreground="White"
+                    FontSize="10"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="15"
+                    Height="15" RenderTransformOrigin="0.547,0.583"
+                    Click="CloseBtn" Grid.Column="1"
+                    Content="X">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#808080"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#BD4345"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="15"
+                                Height="15"
+                                Margin="0"
+                                CornerRadius="100"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+            <Button
+                    Margin="673,10,30,50"
+                    BorderThickness="0"
+                    Foreground="White"
+                    FontSize="15"
+                    Cursor="Hand" FontWeight="Normal" FontFamily="Bahnschrift SemiBold"
+                    Width="15"
+                    Height="15" RenderTransformOrigin="0.547,0.583"
+                    Click="MinimalizeBtn" Grid.Column="1"
+                    Content="-">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#808080"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#DB732E"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="15"
+                                Height="15"
+                                Margin="0"
+                                CornerRadius="100"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+
+
+
+
+            <ContentControl Grid.Row="1"
+                            Margin="22,10,10,10"
+                            Content="{Binding CurrentView}" Grid.ColumnSpan="2"/>
+
+
+
+
+        </Grid>
+
+
+    </Border>
+
+</Window>
