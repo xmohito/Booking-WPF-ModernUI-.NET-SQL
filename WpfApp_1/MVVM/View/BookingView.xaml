@@ -242,7 +242,7 @@
 
 
                 <Button 
-                    Margin="138,378,-43,-210"
+                    Margin="162,409,-67,-241"
                     BorderThickness="0"
                     Content="Zatwierdź"
                     Foreground="White"
@@ -286,9 +286,9 @@
         </Border>
         <Grid Height="100"
               Width="300" Grid.Column="1" Margin="75,280,75,70">
-            <Border Background="#F4717F" CornerRadius="20"/>
+            <Border Background="#F4717F" CornerRadius="20" Margin="0,-20,0,20"/>
 
-            <StackPanel Margin="61,30,-61,-30">
+            <StackPanel Margin="61,15,-61,-30">
                 <RadioButton x:Name="btnStandard" GroupName="One"  IsChecked="False" Content="Standard" FontWeight="SemiBold" Checked="Standard_Checked"/>
                 <RadioButton x:Name="btnSuperior" GroupName="One" IsChecked="False" Content="Superior" FontWeight="SemiBold" Checked="Superior_Checked"/>
                 <RadioButton x:Name="btnDeluxe" GroupName="One" IsChecked="False" Content="Deluxe" FontWeight="SemiBold" Checked="Deluxe_Checked"/>
@@ -298,16 +298,16 @@
             <TextBlock Text="Apartament:"  
                            Height="20"
                            FontSize="16"
-                           FontWeight="SemiBold" Margin="12,9,190,71" />
+                           FontWeight="SemiBold" Margin="10,-8,192,88" />
             <TextBlock Text="Cena:"  
                            Height="20"
                            FontSize="16"
-                           FontWeight="SemiBold" Margin="144,9,58,71" />
+                           FontWeight="SemiBold" Margin="144,-25,58,71" />
             <TextBlock x:Name="showPrice"
                            Text="- - - -"
                            Height="20"
                            FontSize="16"
-                           FontWeight="SemiBold" Margin="178,30,0,50" />
+                           FontWeight="SemiBold" Margin="178,0,0,50" />
 
             <Button 
                     BorderThickness="0"
@@ -316,7 +316,7 @@
                     FontSize="9"
                     Cursor="Hand" FontWeight="SemiBold" FontFamily="Segoe UI Semibold"
                     Width="60"
-                    Height="15" RenderTransformOrigin="0.547,0.583" Margin="221,77,19,8" Click="checkPrice">
+                    Height="15" RenderTransformOrigin="0.547,0.583" Margin="221,56,19,29" Click="checkPrice">
                 <Button.Style>
                     <Style TargetType="Button">
                         <Setter Property="Background" Value="#858585"/>
@@ -348,23 +348,23 @@
             </Button>
 
         </Grid>
-        <!--<Grid Margin="31,264,225,42" Grid.Column="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="85*"/>
-                <ColumnDefinition Width="109*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="Apartament:"  
+
+        <Grid Height="50"
+              Width="300" Margin="75,368,75,32" Grid.Column="1"/>
+        <Border Height="50"
+                Width="300" Grid.Column="1" Margin="75,368,75,32"
+                Background="#F4717F"
+                CornerRadius="10">
+
+
+        </Border>
+        <TextBlock Text="Rodzaj płatności:"  
                            Height="20"
-                           Width="200"
                            FontSize="16"
-                           FontWeight="SemiBold" Margin="4,10,-10,114" Grid.ColumnSpan="2" />
-            <CheckBox Content="standard" FontWeight="SemiBold"
-                     Height="20" Margin="12,36,-97,88" Grid.Column="1" />
-            <CheckBox Content="superior"
-                     Height="20" FontWeight="SemiBold" Margin="12,86,-97,38" Grid.Column="1"/>
-            <CheckBox Content="deluxe"
-                     Height="20"  FontWeight="SemiBold" Margin="12,61,-97,63" Grid.Column="1"/>
-        </Grid>-->
+                           FontWeight="SemiBold" Margin="133,372,169,58" Grid.Column="1" />
+        <RadioButton x:Name="btnByCard" Checked="payByCash" Height="15" Width="100" GroupName="One"  IsChecked="False" Content="Gotówką" FontWeight="SemiBold" Grid.Column="1" Margin="107,393,243,42"/>
+        <RadioButton x:Name="btnByCash"  Checked ="payByCard" Height="15" Width="100"  GroupName="One" IsChecked="False" Content="Kartą " FontWeight="SemiBold" Grid.Column="1" Margin="212,393,138,42"/>
+
 
 
 

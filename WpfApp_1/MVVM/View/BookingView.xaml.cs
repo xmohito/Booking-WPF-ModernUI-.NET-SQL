@@ -188,6 +188,16 @@ namespace WpfApp_1.MVVM.View
                 btnDeluxe.IsChecked = true;
             }
         }
+
+        public void payByCash(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void payByCard(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
     }
 
