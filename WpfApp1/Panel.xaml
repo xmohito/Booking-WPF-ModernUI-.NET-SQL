@@ -341,27 +341,12 @@
                      Background="Transparent"
                      BorderThickness="0,0,0,2">
             </TextBox>
-
-            <TextBox x:Name="id_txt"
-                     HorizontalAlignment="Left"
-                     Margin="433,437,0,0"
-                     TextWrapping="Wrap" 
-                     VerticalAlignment="Top"
-                     Width="87" Height="24"
-                     FontWeight="Medium"
-                     Foreground="White"
-                     CaretBrush="White"
-                     BorderBrush="#5C5C5C"
-                     Background="Transparent"
-                     BorderThickness="0,0,0,3"
-                     FontSize="18">
-            </TextBox>
             <ComboBox x:Name="combobox"
-                      Margin="575,445,256,129"
+                      Margin="433,440,398,134"
                       Width="87" Height="24"
                       ItemsSource="{Binding}"
                       SelectionChanged="combobox_SelectionChanged">
-                
+
             </ComboBox>
             <DataGrid x:Name="datagrid" Width="500"
                       Height="300" Margin="397,132,23,168"
@@ -379,11 +364,29 @@
                    VerticalAlignment="Top"
                    Foreground="#828282"/>
 
+            <Border Height="50"
+                Width="300" Margin="582,446,36,102"
+                Background="#5C5C5C"
+                CornerRadius="10"/>
+            <TextBlock Text="Rodzaj płatności:"
+                       Foreground="White"
+                           Height="20"
+                           FontSize="16"
+                           FontWeight="SemiBold" Margin="591,450,-289,128" />
+            <RadioButton x:Name="btnByCard" Foreground="white"  Height="15" Width="100" GroupName="payment"  IsChecked="False" Content="Gotówką" FontWeight="SemiBold" Margin="677,470,141,113"/>
+            <RadioButton x:Name="btnByCash" Foreground="white"  Height="15" Width="100"  GroupName="payment" IsChecked="False" Content="Kartą " FontWeight="SemiBold" Margin="782,470,36,113"/>
+
+
 
 
 
         </Grid>
 
 
+
     </Border>
+
+
+
+
 </Window>

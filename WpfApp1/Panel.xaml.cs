@@ -70,7 +70,6 @@ namespace WpfApp_1
             phone_txt.Clear();
             mail_txt.Clear();
             date_txt.Clear();
-            id_txt.Clear();
         }
         private void ClearDataBtn_Click(object sender, RoutedEventArgs e)
         {

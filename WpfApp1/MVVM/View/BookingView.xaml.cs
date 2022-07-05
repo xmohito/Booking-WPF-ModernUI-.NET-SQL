@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
+using WpfApp1;
 
 namespace WpfApp_1.MVVM.View
 {
@@ -77,12 +78,24 @@ namespace WpfApp_1.MVVM.View
                 ErrorLabel.Content = "Wypełnij wszystkie dane!";
             }
 
+
             if (Name != "" || Surname != "" || Phone != "" || Email != "" || BirthDate != "" || room_type != 0 || paymentMethod != 0 || CheckIn != null || CheckOut != null)
             {
 
+           
 
 
 
+
+
+
+
+
+
+            }
+            else
+            {
+                ErrorLabel.Content = "Wypełnij wszystkie dane!";
             }
 
 

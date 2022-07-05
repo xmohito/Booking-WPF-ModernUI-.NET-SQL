@@ -241,44 +241,7 @@
 
 
 
-                <Button 
-                    Margin="162,409,-67,-241"
-                    BorderThickness="0"
-                    Content="Zatwierdź"
-                    Foreground="White"
-                    FontSize="10"
-                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
-                    Width="55"
-                    Height="30" RenderTransformOrigin="0.5,0.5" Click="Button_Click" Grid.Column="1">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="#EB5355"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#56EB71"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Width="55"
-                                Height="25"
-                                Margin="0"
-                                CornerRadius="10"
-                                Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center"
-                                              HorizontalAlignment="Center">
-
-                                </ContentPresenter>
-
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-
-
-
-                </Button>
+               
 
 
             </Grid>
@@ -348,6 +311,44 @@
             </Button>
 
         </Grid>
+        <Button 
+                    
+                    BorderThickness="0"
+                    Content="Zatwierdź"
+                    Foreground="White"
+                    FontSize="10"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="70"
+                    Height="40" RenderTransformOrigin="0.5,0.5" Click="Button_Click" Grid.Column="1" Margin="370,410,10,0">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#EB5355"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#56EB71"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="55"
+                                Height="30"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                        </ContentPresenter>
+
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+
+
+
+        </Button>
 
         <Grid Height="50"
               Width="300" Margin="75,368,75,32" Grid.Column="1"/>
@@ -362,18 +363,17 @@
                            Height="20"
                            FontSize="16"
                            FontWeight="SemiBold" Margin="133,372,169,58" Grid.Column="1" />
-        <RadioButton x:Name="btnByCard" Checked="payByCash" Height="15" Width="100" GroupName="One"  IsChecked="False" Content="Gotówką" FontWeight="SemiBold" Grid.Column="1" Margin="107,393,243,42"/>
-        <RadioButton x:Name="btnByCash"  Checked ="payByCard" Height="15" Width="100"  GroupName="One" IsChecked="False" Content="Kartą " FontWeight="SemiBold" Grid.Column="1" Margin="212,393,138,42"/>
+        <RadioButton x:Name="btnByCard" Checked="payByCash" Height="15" Width="100" GroupName="payment"  IsChecked="False" Content="Gotówką" FontWeight="SemiBold" Grid.Column="1" Margin="107,393,243,42"/>
+        <RadioButton x:Name="btnByCash"  Checked ="payByCard" Height="15" Width="100"  GroupName="payment" IsChecked="False" Content="Kartą " FontWeight="SemiBold" Grid.Column="1" Margin="212,393,138,42"/>
 
-        <Label x:Name ="ErrorLabel" Content="sssss"
+        <Label x:Name ="ErrorLabel" Content=""
                Foreground="Red"
                Height="30"
-               Width="200" Grid.Column="1" Margin="288,418,-38,2">
+               Width="200" Grid.Column="1" Margin="75,423,175,-3">
            
         </Label>
 
-
-
+ 
 
 
     </Grid>
