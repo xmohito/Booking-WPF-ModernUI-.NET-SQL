@@ -350,8 +350,31 @@
             </ComboBox>
             <DataGrid x:Name="datagrid" Width="500"
                       Height="300" Margin="397,132,23,168"
-                      IsReadOnly="True"/>
-            <Label Content="Panel zarządzania rezerwacjami"
+                      IsReadOnly="True">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}" >
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Background" Value="#7F95D1"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                        <Setter Property="BorderBrush" Value="#7F95D1"/>
+
+
+                    </Style>
+                    <Style TargetType="{x:Type DataGridRow}" >
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Background" Value="#7F95D1"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="BorderBrush" Value="#7F95D1"/>
+
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Imie" Binding="{Binding Imie}"  Width="115"/>
+                 
+                </DataGrid.Columns>
+                </DataGrid>
+                <Label Content="Panel zarządzania rezerwacjami"
                    HorizontalAlignment="Center"
                    Margin="0,55,0,0"
                    VerticalAlignment="Top"

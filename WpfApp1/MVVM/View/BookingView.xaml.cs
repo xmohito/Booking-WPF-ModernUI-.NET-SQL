@@ -82,16 +82,41 @@ namespace WpfApp_1.MVVM.View
             if (Name != "" || Surname != "" || Phone != "" || Email != "" || BirthDate != "" || room_type != 0 || paymentMethod != 0 || CheckIn != null || CheckOut != null)
             {
 
-           
+
+                using (DbConn db = new DbConn())
+                {
+                    var insertedClient = new client
+                    {
+                        FirstName = Name,
+                        LastName = Surname,
+                        Phone = Phone,
+                        Email = Email,
+                        BirthDate = new DateTime(2001, 01, 01)
+                    };
+                    db.clients.Add(insertedClient);
+                    db.SaveChanges();
 
 
+                    var insertedBook = new booking
+                    {
+                        Id_client = insertedClient.Id,
+                        Id_room = room_type,
+                        Id_method_of_payment = paymentMethod,
+                        ToPay = Convert.ToInt32(showPrice.Text),
+                        Pay = false
+                    };
+                    db.bookings.Add(insertedBook);
+                    db.SaveChanges();
 
-
-
-
-
-
-
+                    var insertedDetails = new detail
+                    {
+                        Id_book = insertedBook.Id,
+                        DateFrom = datePicker1.SelectedDate.Value,
+                        DateTo = datePicker2.SelectedDate.Value
+                    };
+                    db.details.Add(insertedDetails);
+                    db.SaveChanges();
+                }
             }
             else
             {
@@ -126,6 +151,7 @@ namespace WpfApp_1.MVVM.View
 
 
             int daysCount = Int32.Parse(difference.TotalDays.ToString());
+
             if (daysCount > 0)
             {
                 textBlock10.Text = difference.TotalDays.ToString();
@@ -149,105 +175,22 @@ namespace WpfApp_1.MVVM.View
 
         public void Standard_Checked(object sender, RoutedEventArgs e)
         {
-            if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
-            {
-                showPrice.Text = "Wybierz termin";
-                return;
-            }
+            checkPrice();
 
-            DateTime start = datePicker1.SelectedDate.Value.Date;
-            DateTime finish = datePicker2.SelectedDate.Value.Date;
-            TimeSpan difference = finish.Subtract(start);
-
-
-            int daysCount = Int32.Parse(difference.TotalDays.ToString());
-            int price = 300;
-            int finalPrice = price * daysCount;
-            if (daysCount > 0)
-            {
-                showPrice.Text = finalPrice.ToString() + " zł";
-
-            }
-            else
-            {
-                showPrice.Text = "- - - -";
-            }
-            
         }
 
         public void Superior_Checked(object sender, RoutedEventArgs e)
         {
-            if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
-            {
-                showPrice.Text = "Wybierz termin";
-                return;
-            }
-
-            DateTime start = datePicker1.SelectedDate.Value.Date;
-            DateTime finish = datePicker2.SelectedDate.Value.Date;
-            TimeSpan difference = finish.Subtract(start);
-
-
-            int daysCount = Int32.Parse(difference.TotalDays.ToString());
-            int price = 500;
-            int finalPrice = price * daysCount;
-            if (daysCount > 0)
-            {
-                showPrice.Text = finalPrice.ToString() + " zł";
-
-            }
-            else
-            {
-                showPrice.Text = "- - - -";
-            }
+            checkPrice();
 
         }
 
         public void Deluxe_Checked(object sender, RoutedEventArgs e)
         {
-            if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
-            {
-                showPrice.Text = "Wybierz termin";
-                return;
-            }
-
-            DateTime start = datePicker1.SelectedDate.Value.Date;
-            DateTime finish = datePicker2.SelectedDate.Value.Date;
-            TimeSpan difference = finish.Subtract(start);
-
-
-            int daysCount = Int32.Parse(difference.TotalDays.ToString());
-            int price = 700;
-            int finalPrice = price * daysCount;
-            if (daysCount > 0)
-            {
-                showPrice.Text = finalPrice.ToString() +" zł";
-
-            }
-            else
-            {
-                showPrice.Text = "- - - -";
-            }
+            checkPrice();
         }
 
-        public void checkPrice(object sender, RoutedEventArgs e)
-        {
-            if (btnStandard.IsChecked == true)
-            {
-                btnStandard.IsChecked = false;
-                btnStandard.IsChecked = true;
-            }
-            else if (btnSuperior.IsChecked == true)
-            {
-                btnSuperior.IsChecked = false;
-                btnSuperior.IsChecked = true;
-            }
-            else if (btnDeluxe.IsChecked == true)
-            {
-                btnDeluxe.IsChecked = false;
-                btnDeluxe.IsChecked = true;
-            }
-        }
+       
 
         public void payByCash(object sender, RoutedEventArgs e)
         {
@@ -257,6 +200,56 @@ namespace WpfApp_1.MVVM.View
         public void payByCard(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        public void checkPrice()
+        {
+            if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
+            {
+                textBlock10.Text = "Wybierz daty";
+                return;
+            }
+            DateTime start = datePicker1.SelectedDate.Value.Date;
+            DateTime finish = datePicker2.SelectedDate.Value.Date;
+            TimeSpan difference = finish.Subtract(start);
+
+
+            int daysCount = Int32.Parse(difference.TotalDays.ToString());
+           
+            if (daysCount > 0)
+            {
+               
+                if (btnStandard.IsChecked == true)
+                {
+                    int price = 300;
+                    int finalPrice = price * daysCount;
+                    showPrice.Text = finalPrice.ToString();
+                }
+                else if (btnSuperior.IsChecked == true)
+                {
+                    int price = 500;
+                    int finalPrice = price * daysCount;
+                    showPrice.Text = finalPrice.ToString();
+                }
+                else if (btnDeluxe.IsChecked == true)
+                {
+                    int price = 700;
+                    int finalPrice = price * daysCount;
+                    showPrice.Text = finalPrice.ToString();
+                }
+            }
+            else
+            {
+                showPrice.Text = "- - - -";
+            }
+
+
+            
+        }
+
+        private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            checkPrice();
         }
     }
     }

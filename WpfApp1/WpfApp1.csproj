@@ -240,10 +240,10 @@
       <LastGenOutput>Models.cs</LastGenOutput>
     </Content>
     <Content Include="VipApartamentsDB_1.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="VipApartamentsDB_1_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <DependentUpon>VipApartamentsDB_1.mdf</DependentUpon>
     </Content>
   </ItemGroup>

@@ -26,7 +26,7 @@ namespace WpfApp_1
         public Panel()
         {
             InitializeComponent();
-            LoadGrid();
+            //LoadGrid();
             byleco();
         }
 
@@ -49,8 +49,8 @@ namespace WpfApp_1
 
             using (DbConn db = new DbConn())
             {
-                var listItems = db.clients.ToList();
-                datagrid.ItemsSource = listItems;
+                //var listItems = db.clients.ToList();
+                //datagrid.ItemsSource = listItems;
 
 
             }
@@ -125,15 +125,39 @@ namespace WpfApp_1
 
         private void byleco()
         {
-            List<client> list = new List<client>();
-            using(DbConn db = new DbConn())
+            //List<client> list = new List<client>();
+            //using(DbConn db = new DbConn())
+            //{
+            //    var listItems = db.clients.ToList();
+            //    list = listItems;
+            //    combobox.ItemsSource = list;
+            //    combobox.DisplayMemberPath = "Id";
+            //    combobox.SelectedValuePath = "Id";
+            //}
+
+
+            List<dataInDataGrid> list = new List<dataInDataGrid>();
+            using (DbConn db = new DbConn())
             {
-                var listItems = db.clients.ToList();
-                list = listItems;
-                combobox.ItemsSource = list;
-                combobox.DisplayMemberPath = "Id";
-                combobox.SelectedValuePath = "Id";
+                var id_finder = (from clients in db.clients
+                                 join booking in db.bookings on clients.Id equals booking.Id_client
+                                 select new
+                                 {
+                                   Imie = clients.FirstName
+                                 }).ToList();
+                foreach (var test in id_finder)
+                {
+                    MessageBox.Show(test.Imie);
+                    datagrid.Items.Add(new dataInDataGrid { Imie = test.Imie });
+
+                }
             }
+
         }
+    }
+
+    public class dataInDataGrid
+    {
+        public string Imie { get; set; }
     }
 }
