@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp_1"
         mc:Ignorable="d"
-        Title="Booking" Height="600" Width="920"
+        Title="Booking" Height="600" Width="1200"
         WindowStyle="None"
         ResizeMode="NoResize"
         Background="Transparent"
@@ -221,7 +221,7 @@
 
             <TextBlock Text="Imię:"
                        FontWeight="SemiBold"
-                       Margin="27,212,769,364"
+                       Margin="24,57,1054,521"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -230,7 +230,7 @@
 
             <TextBlock Text="Nazwisko:"
                        FontWeight="SemiBold"
-                       Margin="27,244,769,332"
+                       Margin="24,89,1054,489"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -239,7 +239,7 @@
 
             <TextBlock Text="Telefon:"
                        FontWeight="SemiBold"
-                       Margin="27,279,769,297"
+                       Margin="24,124,1054,454"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -248,7 +248,7 @@
 
             <TextBlock Text="Email:"
                        FontWeight="SemiBold"
-                       Margin="27,313,769,263"
+                       Margin="24,158,1054,420"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -257,7 +257,7 @@
 
             <TextBlock Text="Data urodzenia:"
                        FontWeight="SemiBold"
-                       Margin="27,347,769,229"
+                       Margin="24,192,1054,386"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -266,7 +266,7 @@
 
             <TextBlock Text="ID:"
                        FontWeight="SemiBold"
-                       Margin="400,440,398,138"
+                       Margin="363,437,715,141"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -276,7 +276,7 @@
             <!--Text Boxes-->
             <TextBox x:Name="name_txt"
                      HorizontalAlignment="Left"
-                     Margin="160,206,0,0"
+                     Margin="144,50,0,0"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"
                      Width="192" Height="24"
@@ -289,7 +289,7 @@
             </TextBox>
             <TextBox x:Name="surname_txt" 
                      HorizontalAlignment="Left"
-                     Margin="160,238,0,0"
+                     Margin="144,82,0,0"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"
                      Width="192" Height="24"
@@ -302,7 +302,7 @@
             </TextBox>
             <TextBox x:Name="phone_txt"
                      HorizontalAlignment="Left"
-                     Margin="160,273,0,0"
+                     Margin="144,117,0,0"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"
                      Width="192" Height="24"
@@ -316,7 +316,7 @@
 
             <TextBox x:Name="mail_txt"
                      HorizontalAlignment="Left"
-                     Margin="160,310,0,0"
+                     Margin="144,154,0,0"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"
                      Width="192" Height="24"
@@ -330,7 +330,7 @@
 
             <TextBox x:Name="date_txt"
                      HorizontalAlignment="Left"
-                     Margin="160,344,0,0"
+                     Margin="144,188,0,0"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"
                      Width="192" Height="24"
@@ -342,14 +342,14 @@
                      BorderThickness="0,0,0,2">
             </TextBox>
             <ComboBox x:Name="combobox"
-                      Margin="433,440,398,134"
+                      Margin="396,437,715,137"
                       Width="87" Height="24"
                       ItemsSource="{Binding}"
                       SelectionChanged="combobox_SelectionChanged">
 
             </ComboBox>
-            <DataGrid x:Name="datagrid" Width="500"
-                      Height="300" Margin="397,132,23,168"
+            <DataGrid x:Name="datagrid"
+                      Height="300" Margin="355,132,23,166"
                       IsReadOnly="True">
                 <DataGrid.Resources>
                     <Style TargetType="{x:Type DataGridColumnHeader}" >
@@ -370,11 +370,21 @@
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"  Width="15"/>
                     <DataGridTextColumn Header="Imie" Binding="{Binding Imie}"  Width="115"/>
-                 
+                    <DataGridTextColumn Header="Nazwisko" Binding="{Binding Nazwisko}"  Width="115"/>
+                    <DataGridTextColumn Header="Telefon" Binding="{Binding Telefon}"  Width="115"/>
+                    <DataGridTextColumn Header="Email" Binding="{Binding Email}"  Width="115"/>
+                    <DataGridTextColumn Header="Data Urodzenia" Binding="{Binding DataUrodzenia}"  Width="130"/>
+                    <DataGridTextColumn Header="Zameldowanie" Binding="{Binding Zameldowanie}"  Width="130"/>
+                    <DataGridTextColumn Header="Wymeldowanie" Binding="{Binding Wymeldowanie}"  Width="130"/>
+                    <DataGridTextColumn Header="Rodzaj płatności" Binding="{Binding RodzajPlatnosci}"  Width="115"/>
+                    <DataGridTextColumn Header="Do zapłaty" Binding="{Binding DoZaplaty}"  Width="115"/>
+                    <DataGridTextColumn Header="Czy zapłacił" Binding="{Binding CzyZaplacil}"  Width="115"/>
+
                 </DataGrid.Columns>
-                </DataGrid>
-                <Label Content="Panel zarządzania rezerwacjami"
+            </DataGrid>
+            <Label Content="Panel zarządzania rezerwacjami"
                    HorizontalAlignment="Center"
                    Margin="0,55,0,0"
                    VerticalAlignment="Top"
@@ -383,21 +393,21 @@
                    FontSize="20"/>
             <Label Content="VipApartaments"
                    HorizontalAlignment="Left"
-                   Margin="10,2,0,0"
+                   Margin="10,2,0,0" 
                    VerticalAlignment="Top"
                    Foreground="#828282"/>
 
             <Border Height="50"
-                Width="300" Margin="582,446,36,102"
+                Width="300" Margin="858,446,40,102"
                 Background="#5C5C5C"
                 CornerRadius="10"/>
             <TextBlock Text="Rodzaj płatności:"
                        Foreground="White"
                            Height="20"
                            FontSize="16"
-                           FontWeight="SemiBold" Margin="591,450,-289,128" />
-            <RadioButton x:Name="btnByCard" Foreground="white"  Height="15" Width="100" GroupName="payment"  IsChecked="False" Content="Gotówką" FontWeight="SemiBold" Margin="677,470,141,113"/>
-            <RadioButton x:Name="btnByCash" Foreground="white"  Height="15" Width="100"  GroupName="payment" IsChecked="False" Content="Kartą " FontWeight="SemiBold" Margin="782,470,36,113"/>
+                           FontWeight="SemiBold" Margin="864,449,-562,129" />
+            <RadioButton x:Name="btnByCard" Foreground="white"  Height="15" Width="100" GroupName="payment"  IsChecked="False" Content="Gotówką" FontWeight="SemiBold" Margin="947,474,151,109" RenderTransformOrigin="-0.52,0.733"/>
+            <RadioButton x:Name="btnByCash" Foreground="white"  Height="15" Width="100"  GroupName="payment" IsChecked="False" Content="Kartą " FontWeight="SemiBold" Margin="1058,474,40,109"/>
 
 
 

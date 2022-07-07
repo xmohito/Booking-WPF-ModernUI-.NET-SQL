@@ -43,7 +43,7 @@ namespace WpfApp_1.MVVM.View
             string Surname = txtSurname.Text;
             string Phone = txtPhone.Text;
             string Email = txtMail.Text;
-            string BirthDate = txtDate.Text;
+            DateTime? BirthDate = birthDate.SelectedDate;
             DateTime? CheckIn = datePicker1.SelectedDate;
             DateTime? CheckOut = datePicker2.SelectedDate;
 
@@ -79,7 +79,7 @@ namespace WpfApp_1.MVVM.View
             }
 
 
-            if (Name != "" || Surname != "" || Phone != "" || Email != "" || BirthDate != "" || room_type != 0 || paymentMethod != 0 || CheckIn != null || CheckOut != null)
+            if (Name != "" || Surname != "" || Phone != "" || Email != "" || BirthDate != null || room_type != 0 || paymentMethod != 0 || CheckIn != null || CheckOut != null)
             {
 
 
@@ -91,7 +91,7 @@ namespace WpfApp_1.MVVM.View
                         LastName = Surname,
                         Phone = Phone,
                         Email = Email,
-                        BirthDate = new DateTime(2001, 01, 01)
+                        BirthDate = BirthDate.Value
                     };
                     db.clients.Add(insertedClient);
                     db.SaveChanges();

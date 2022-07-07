@@ -139,18 +139,65 @@ namespace WpfApp_1
             List<dataInDataGrid> list = new List<dataInDataGrid>();
             using (DbConn db = new DbConn())
             {
-                var id_finder = (from clients in db.clients
-                                 join booking in db.bookings on clients.Id equals booking.Id_client
+
+
+
+                //var id_finder = (from clients in db.clients
+                //                 join booking in db.bookings on clients.Id equals booking.Id_client
+                //                 select new
+                //                 {
+                //                     Id = booking.Id,
+                //                     Imie = clients.FirstName,
+                //                     Nazwisko = clients.LastName,
+                //                     Telefon = clients.Phone,
+                //                     Email = clients.Email,
+                //                     DataUrodzenia = clients.BirthDate
+
+                //                 }).ToList();
+
+                //foreach (var data in id_finder)
+                //{
+                //    datagrid.Items.Add(new dataInDataGrid { Id = data.Id, Imie = data.Imie, Nazwisko = data.Nazwisko, Telefon = data.Telefon, Email = data.Email, DataUrodzenia = data.DataUrodzenia });
+
+                //}
+                var id_finder = (from booking in db.bookings
+                                 join clients in db.clients on booking.Id_client equals clients.Id
+                                 join details in db.details on booking.Id equals details.Id_book
+                                 join payments in db.payments on booking.Id_method_of_payment equals payments.Id
                                  select new
                                  {
-                                   Imie = clients.FirstName
+                                   Id = booking.Id,
+                                   Imie = clients.FirstName,
+                                   Nazwisko = clients.LastName,
+                                   Telefon = clients.Phone,
+                                   Email = clients.Email,
+                                   DataUrodzenia = clients.BirthDate,
+                                   Zameldowanie = details.DateFrom,
+                                   Wymeldowanie = details.DateTo,
+                                   RodzajPlatnosci = payments.payment_method,
+                                   DoZaplaty = booking.ToPay,
+                                   CzyZaplacil = booking.Pay
+                                   
                                  }).ToList();
-                foreach (var test in id_finder)
+
+                foreach (var data in id_finder)
                 {
-                    MessageBox.Show(test.Imie);
-                    datagrid.Items.Add(new dataInDataGrid { Imie = test.Imie });
+                    datagrid.Items.Add(new dataInDataGrid {
+                                                           Id = data.Id,
+                                                           Imie = data.Imie,
+                                                           Nazwisko = data.Nazwisko,
+                                                           Telefon = data.Telefon,
+                                                           Email = data.Email,
+                                                           DataUrodzenia = data.DataUrodzenia,
+                                                           Zameldowanie = data.Zameldowanie,
+                                                           Wymeldowanie = data.Wymeldowanie,
+                                                           RodzajPlatnosci = data.RodzajPlatnosci,
+                                                           DoZaplaty = data.DoZaplaty,
+                                                           CzyZaplacil = data.CzyZaplacil
+                                                           });
 
                 }
+             
             }
 
         }
@@ -158,6 +205,16 @@ namespace WpfApp_1
 
     public class dataInDataGrid
     {
+        public int Id { get; set; }
         public string Imie { get; set; }
+        public string Nazwisko { get; set; }
+        public string Telefon { get; set; }
+        public string Email { get; set; }
+        public DateTime DataUrodzenia { get; set; }
+        public DateTime Zameldowanie { get; set; }
+        public DateTime Wymeldowanie { get; set; }
+        public string RodzajPlatnosci { get; set; }
+        public int DoZaplaty { get; set; }
+        public bool CzyZaplacil { get; set; }
     }
 }
