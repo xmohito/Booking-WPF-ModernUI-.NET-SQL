@@ -82,7 +82,7 @@ namespace WpfApp_1
                 phone_txt.Text == string.Empty || mail_txt.Text == string.Empty ||
                 birthNamePicker.SelectedDate == null)
             {
-                MessageBox.Show("Wprowadz wszystkie dane!", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Wprowadz wszystkie dane!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;
@@ -102,19 +102,33 @@ namespace WpfApp_1
         {
             using (DbConn db = new DbConn())
             {
-                int getId = (int)combobox.SelectedValue;
-                var client = db.clients.First(c => c.Id == getId);
-                if(client != null)
+                if(combobox.SelectedValue != null && name_txt.Text !="" && surname_txt.Text != "" && phone_txt.Text != "" && mail_txt.Text != "" && birthNamePicker.SelectedDate.Value != null)
                 {
-                    client.FirstName = name_txt.Text;
-                    client.LastName = surname_txt.Text;
-                    client.Phone = phone_txt.Text;
-                    client.Email = mail_txt.Text;
-                    client.BirthDate = birthNamePicker.SelectedDate.Value;
-                    db.SaveChanges();
-                    
+                    int getId = (int)combobox.SelectedValue;
+                    var client = db.clients.First(c => c.Id == getId);
+                    if (client != null)
+                    {
+                        client.FirstName = name_txt.Text;
+                        client.LastName = surname_txt.Text;
+                        client.Phone = phone_txt.Text;
+                        client.Email = mail_txt.Text;
+                        client.BirthDate = birthNamePicker.SelectedDate.Value;
+                        db.SaveChanges();
+                        MessageBox.Show("Zmiany zostały wprowadzone", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
 
+
+                    }
                 }
+                else if(name_txt.Text == "" || surname_txt.Text == "" || phone_txt.Text != "" || mail_txt.Text == "" || birthNamePicker.SelectedDate.Value == null)
+                {
+                    MessageBox.Show("Wypełnij wszystkie pola", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Wybierz Id!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+              
+                
                 
 
             }
@@ -203,31 +217,40 @@ namespace WpfApp_1
     
         private void checkpayment_Click(object sender, RoutedEventArgs e)
         {
-            bool pay = false;
-            if(btnYes.IsChecked == true)
+            if(combobox.SelectedValue != null)
             {
-                pay = true;
-                MessageBox.Show("Potwierdzono wpłatę", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-            else if(btnNo.IsChecked == true)
-            {
-                pay = false;
+                bool pay = false;
+                if (btnYes.IsChecked == true)
+                {
+                    pay = true;
+                    MessageBox.Show("Potwierdzono wpłatę", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else if (btnNo.IsChecked == true)
+                {
+                    pay = false;
+                    MessageBox.Show("Anulowano wpłatę", "Anulowanie", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Zaznacz przycisk", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                using (DbConn db = new DbConn())
+                {
+                    int getId = (int)combobox.SelectedValue;
+                    var payment = db.bookings.First(c => c.Id == getId);
+                    if (payment != null)
+                    {
+                        payment.Pay = pay;
+                        db.SaveChanges();
+                    }
+
+                }
             }
             else
             {
-                MessageBox.Show("Zaznacz przycisk", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Wybierz Id!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            using (DbConn db = new DbConn())
-            {
-                int getId = (int)combobox.SelectedValue;
-                var payment = db.bookings.First(c => c.Id == getId);
-                if (payment != null)
-                {
-                    payment.Pay = pay;
-                    db.SaveChanges();
-                }
-
-            }
+            
         }
 
         public void btnNo_Checked(object sender, RoutedEventArgs e)
