@@ -117,6 +117,7 @@ namespace WpfApp_1.MVVM.View
                     db.details.Add(insertedDetails);
                     db.SaveChanges();
                 }
+                MessageBox.Show("Dokonano rezerwacji", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
