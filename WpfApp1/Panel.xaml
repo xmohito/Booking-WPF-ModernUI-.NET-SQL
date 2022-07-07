@@ -17,7 +17,7 @@
             BorderThickness="1">
         <Grid Initialized="Grid_Initialized">
             <Button
-                    Margin="866,10,10,566"
+                    Margin="1148,8,10,570"
                     BorderThickness="0"
                     Content="X"
                     Foreground="White"
@@ -55,6 +55,7 @@
             </Button>
 
             <!--insert btn-->
+            <!--
             <Button x:Name="InsertBtn"
                     Margin="252,518,574,38"
                     BorderThickness="0"
@@ -88,15 +89,15 @@
 
                         </Border>
                     </ControlTemplate>
-                </Button.Template>
+                </Button.Template> 
 
 
 
-            </Button>
+            </Button>-->
 
             <!--update btn-->
             <Button x:Name="UpdateBtn"
-                    Margin="365,518,461,38"
+                    Margin="30,341,1078,217"
                     BorderThickness="0"
                     Content="Update Record"
                     Foreground="White"
@@ -109,7 +110,7 @@
                         <Setter Property="Background" Value="#5C5C5C"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#D49000"/>
+                                <Setter Property="Background" Value="#456BA8"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -138,7 +139,7 @@
 
             <!--delete btn-->
             <Button x:Name="DeleteBtn"
-                    Margin="485,518,341,38"
+                    Margin="136,341,972,217"
                     BorderThickness="0"
                     Content="Delete Record"
                     Foreground="White"
@@ -151,7 +152,7 @@
                         <Setter Property="Background" Value="#5C5C5C"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#D49000"/>
+                                <Setter Property="Background" Value="#456BA8"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -179,7 +180,7 @@
 
             <!--clear data btn-->
             <Button x:Name="ClearDataBtn"
-                    Margin="602,518,224,38"
+                    Margin="243,341,865,217"
                     BorderThickness="0"
                     Content="Clear Data"
                     Foreground="White"
@@ -192,7 +193,7 @@
                         <Setter Property="Background" Value="#5C5C5C"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#D49000"/>
+                                <Setter Property="Background" Value="#456BA8"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -218,7 +219,7 @@
             </Button>
 
             <Button x:Name="checkpayment"
-                    Margin="1079,509,29,49"
+                    Margin="988,512,120,46"
                     BorderThickness="0"
                     Content="Potwierdz"
                     Foreground="White"
@@ -232,7 +233,7 @@
                         <Setter Property="Background" Value="#5C5C5C"/>
                         <Style.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#D49000"/>
+                                <Setter Property="Background" Value="#456BA8"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -261,7 +262,7 @@
 
             <TextBlock Text="Imię:"
                        FontWeight="SemiBold"
-                       Margin="24,57,1054,521"
+                       Margin="16,160,1062,418"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -270,7 +271,7 @@
 
             <TextBlock Text="Nazwisko:"
                        FontWeight="SemiBold"
-                       Margin="24,89,1054,489"
+                       Margin="16,192,1062,386"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -279,7 +280,7 @@
 
             <TextBlock Text="Telefon:"
                        FontWeight="SemiBold"
-                       Margin="24,124,1054,454"
+                       Margin="16,227,1062,351"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -288,7 +289,7 @@
 
             <TextBlock Text="Email:"
                        FontWeight="SemiBold"
-                       Margin="24,158,1054,420"
+                       Margin="16,261,1062,317"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -297,7 +298,7 @@
 
             <TextBlock Text="Data urodzenia:"
                        FontWeight="SemiBold"
-                       Margin="24,192,1054,386"
+                       Margin="16,295,1062,283"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -306,7 +307,7 @@
 
             <TextBlock Text="ID:"
                        FontWeight="SemiBold"
-                       Margin="363,437,715,141"
+                       Margin="617,452,461,126"
                        FontSize="16"
                        Foreground="White"
                        Height="20"
@@ -316,66 +317,74 @@
             <!--Text Boxes-->
             <TextBox x:Name="name_txt"
                      HorizontalAlignment="Left"
-                     Margin="144,50,0,0"
+                     Margin="136,153,0,0"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"
                      Width="192" Height="24"
                      FontWeight="Medium"
                      Foreground="White"
                      CaretBrush="White"  
-                     BorderBrush="#D49000"
+                     BorderBrush="#456BA8"
                      Background="Transparent"
                      BorderThickness="0,0,0,2">
             </TextBox>
             <TextBox x:Name="surname_txt" 
                      HorizontalAlignment="Left"
-                     Margin="144,82,0,0"
+                     Margin="136,185,0,0"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"
                      Width="192" Height="24"
                      FontWeight="Medium"
                      Foreground="White"
                      CaretBrush="White"
-                     BorderBrush="#D49000"
+                     BorderBrush="#456BA8"
                      Background="Transparent"
                      BorderThickness="0,0,0,2">
             </TextBox>
             <TextBox x:Name="phone_txt"
                      HorizontalAlignment="Left"
-                     Margin="144,117,0,0"
+                     Margin="136,220,0,0"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"
                      Width="192" Height="24"
                      FontWeight="Medium"
                      Foreground="White"
                      CaretBrush="White"
-                     BorderBrush="#D49000"
+                     BorderBrush="#456BA8"
                      Background="Transparent"
                      BorderThickness="0,0,0,2">
             </TextBox>
 
             <TextBox x:Name="mail_txt"
                      HorizontalAlignment="Left"
-                     Margin="144,154,0,0"
+                     Margin="136,257,0,0"
                      TextWrapping="Wrap" 
                      VerticalAlignment="Top"
                      Width="192" Height="24"
                      FontWeight="Medium"
                      Foreground="White"
                      CaretBrush="White"
-                     BorderBrush="#D49000"
+                     BorderBrush="#456BA8"
                      Background="Transparent"
                      BorderThickness="0,0,0,2">
             </TextBox>
 
             <DatePicker x:Name="birthNamePicker"
-                Margin="149,192,857,381"
+                Margin="141,295,865,278"
                         Height="25"
                         Width="192">
-                
-            </DatePicker>  
+
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type DatePickerTextBox}">
+                        <Setter Property="Text" Value="Data urodzenia" />
+                        <Setter Property="FontWeight" Value="Medium"/>
+                        <Setter Property="IsReadOnly" Value="True"/>
+                    </Style>
+                </DatePicker.Resources>
+
+            </DatePicker>
             <ComboBox x:Name="combobox"
-                      Margin="396,437,715,137"
+                      Margin="650,452,461,122"
                       Width="87" Height="24"
                       ItemsSource="{Binding}"
                       SelectionChanged="combobox_SelectionChanged">
@@ -383,37 +392,44 @@
             </ComboBox>
             <DataGrid x:Name="datagrid"
                       Height="300" Margin="355,132,23,166"
-                      IsReadOnly="True">
+                      IsReadOnly="True"
+                      Background="#303030">
                 <DataGrid.Resources>
+
+                    <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" 
+                   Color="#919191" />
                     <Style TargetType="{x:Type DataGridColumnHeader}" >
                         <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="Background" Value="#7F95D1"/>
+                        <Setter Property="Background" Value="#919191"/>
                         <Setter Property="FontWeight" Value="SemiBold"/>
-                        <Setter Property="BorderThickness" Value="0,0,1,2"/>
-                        <Setter Property="BorderBrush" Value="#7F95D1"/>
+                        <Setter Property="BorderThickness" Value="0,0,1,5"/>
+                        <Setter Property="BorderBrush" Value="#CCCCCC"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
 
 
                     </Style>
                     <Style TargetType="{x:Type DataGridRow}" >
                         <Setter Property="Foreground" Value="White"/>
-                        <Setter Property="Background" Value="#7F95D1"/>
+                        <Setter Property="Background" Value="#616161"/>
                         <Setter Property="FontWeight" Value="SemiBold"/>
-                        <Setter Property="BorderBrush" Value="#7F95D1"/>
+                        <Setter Property="BorderBrush" Value="#616161"/>
+                        <Setter Property="BorderThickness" Value="0,0,0,0"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Right"/>
 
                     </Style>
                 </DataGrid.Resources>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}"  Width="15"/>
+                    <DataGridTextColumn Header="Płatność" Binding="{Binding CzyZaplacil}"  Width="80"/>
                     <DataGridTextColumn Header="Imie" Binding="{Binding Imie}"  Width="115"/>
                     <DataGridTextColumn Header="Nazwisko" Binding="{Binding Nazwisko}"  Width="115"/>
                     <DataGridTextColumn Header="Telefon" Binding="{Binding Telefon}"  Width="115"/>
                     <DataGridTextColumn Header="Email" Binding="{Binding Email}"  Width="115"/>
-                    <DataGridTextColumn Header="Data Urodzenia" Binding="{Binding DataUrodzenia}"  Width="130"/>
-                    <DataGridTextColumn Header="Zameldowanie" Binding="{Binding Zameldowanie}"  Width="130"/>
-                    <DataGridTextColumn Header="Wymeldowanie" Binding="{Binding Wymeldowanie}"  Width="130"/>
+                    <DataGridTextColumn Header="Data Urodzenia" Binding="{Binding DataUrodzenia, StringFormat={}{0:dd/MM/yyyy}}"  Width="130"/>
+                    <DataGridTextColumn Header="Zameldowanie" Binding="{Binding Zameldowanie, StringFormat={}{0:dd/MM/yyyy}}"  Width="130"/>
+                    <DataGridTextColumn Header="Wymeldowanie" Binding="{Binding Wymeldowanie, StringFormat={}{0:dd/MM/yyyy}}"  Width="130"/>
                     <DataGridTextColumn Header="Rodzaj płatności" Binding="{Binding RodzajPlatnosci}"  Width="115"/>
-                    <DataGridTextColumn Header="Do zapłaty" Binding="{Binding DoZaplaty}"  Width="115"/>
-                    <DataGridTextColumn Header="Zapłacono" Binding="{Binding CzyZaplacil}"  Width="115"/>
+                    <DataGridTextColumn Header="Do zapłaty" Binding="{Binding DoZaplaty}"  Width="65"/>
 
                 </DataGrid.Columns>
             </DataGrid>
@@ -431,16 +447,16 @@
                    Foreground="#828282"/>
 
             <Border Height="50"
-                Width="300" Margin="858,446,40,102"
+                Width="300" Margin="766,449,132,99"
                 Background="#5C5C5C"
                 CornerRadius="10"/>
             <TextBlock Text="Zapłacono:"
                        Foreground="White"
                            Height="20"
                            FontSize="16"
-                           FontWeight="SemiBold" Margin="864,449,242,129" />
-            <RadioButton x:Name="btnYes" Foreground="white"  Height="15" GroupName="payment"  IsChecked="False" Content="Tak" FontWeight="SemiBold" Margin="947,474,201,109" RenderTransformOrigin="-0.52,0.733" Checked="btnYes_Checked"/>
-            <RadioButton x:Name="btnNo" Foreground="white"  Height="15"  GroupName="payment" IsChecked="False" Content="Nie" FontWeight="SemiBold" Margin="1030,474,118,109" Checked="btnNo_Checked"/>
+                           FontWeight="SemiBold" Margin="772,452,334,126" />
+            <RadioButton x:Name="btnYes" Foreground="white"  Height="15" GroupName="payment"  IsChecked="False" Content="Tak" FontWeight="SemiBold" Margin="856,477,292,106" RenderTransformOrigin="-0.52,0.733" Checked="btnYes_Checked"/>
+            <RadioButton x:Name="btnNo" Foreground="white"  Height="15"  GroupName="payment" IsChecked="False" Content="Nie" FontWeight="SemiBold" Margin="938,477,210,106" Checked="btnNo_Checked"/>
 
 
 
