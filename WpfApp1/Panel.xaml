@@ -217,6 +217,46 @@
 
             </Button>
 
+            <Button x:Name="checkpayment"
+                    Margin="1079,509,29,49"
+                    BorderThickness="0"
+                    Content="Potwierdz"
+                    Foreground="White"
+                    FontSize="12"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="90"
+                    Height="40" RenderTransformOrigin="0.547,0.583"
+                    Click="checkpayment_Click">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#5C5C5C"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#D49000"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="90"
+                                Height="40"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+
+
+            </Button>
+
             <!--form for editing-->
 
             <TextBlock Text="Imię:"
@@ -328,19 +368,12 @@
                      BorderThickness="0,0,0,2">
             </TextBox>
 
-            <TextBox x:Name="date_txt"
-                     HorizontalAlignment="Left"
-                     Margin="144,188,0,0"
-                     TextWrapping="Wrap" 
-                     VerticalAlignment="Top"
-                     Width="192" Height="24"
-                     FontWeight="Medium"
-                     Foreground="White"
-                     CaretBrush="White"
-                     BorderBrush="#D49000"
-                     Background="Transparent"
-                     BorderThickness="0,0,0,2">
-            </TextBox>
+            <DatePicker x:Name="birthNamePicker"
+                Margin="149,192,857,381"
+                        Height="25"
+                        Width="192">
+                
+            </DatePicker>  
             <ComboBox x:Name="combobox"
                       Margin="396,437,715,137"
                       Width="87" Height="24"
@@ -380,7 +413,7 @@
                     <DataGridTextColumn Header="Wymeldowanie" Binding="{Binding Wymeldowanie}"  Width="130"/>
                     <DataGridTextColumn Header="Rodzaj płatności" Binding="{Binding RodzajPlatnosci}"  Width="115"/>
                     <DataGridTextColumn Header="Do zapłaty" Binding="{Binding DoZaplaty}"  Width="115"/>
-                    <DataGridTextColumn Header="Czy zapłacił" Binding="{Binding CzyZaplacil}"  Width="115"/>
+                    <DataGridTextColumn Header="Zapłacono" Binding="{Binding CzyZaplacil}"  Width="115"/>
 
                 </DataGrid.Columns>
             </DataGrid>
@@ -401,13 +434,13 @@
                 Width="300" Margin="858,446,40,102"
                 Background="#5C5C5C"
                 CornerRadius="10"/>
-            <TextBlock Text="Rodzaj płatności:"
+            <TextBlock Text="Zapłacono:"
                        Foreground="White"
                            Height="20"
                            FontSize="16"
-                           FontWeight="SemiBold" Margin="864,449,-562,129" />
-            <RadioButton x:Name="btnByCard" Foreground="white"  Height="15" Width="100" GroupName="payment"  IsChecked="False" Content="Gotówką" FontWeight="SemiBold" Margin="947,474,151,109" RenderTransformOrigin="-0.52,0.733"/>
-            <RadioButton x:Name="btnByCash" Foreground="white"  Height="15" Width="100"  GroupName="payment" IsChecked="False" Content="Kartą " FontWeight="SemiBold" Margin="1058,474,40,109"/>
+                           FontWeight="SemiBold" Margin="864,449,242,129" />
+            <RadioButton x:Name="btnYes" Foreground="white"  Height="15" GroupName="payment"  IsChecked="False" Content="Tak" FontWeight="SemiBold" Margin="947,474,201,109" RenderTransformOrigin="-0.52,0.733" Checked="btnYes_Checked"/>
+            <RadioButton x:Name="btnNo" Foreground="white"  Height="15"  GroupName="payment" IsChecked="False" Content="Nie" FontWeight="SemiBold" Margin="1030,474,118,109" Checked="btnNo_Checked"/>
 
 
 

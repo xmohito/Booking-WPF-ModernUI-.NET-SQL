@@ -47,13 +47,13 @@ namespace WpfApp_1
         {
 
 
-            using (DbConn db = new DbConn())
-            {
-                //var listItems = db.clients.ToList();
-                //datagrid.ItemsSource = listItems;
+            //using (DbConn db = new DbConn())
+            //{
+            //    //var listItems = db.clients.ToList();
+            //    //datagrid.ItemsSource = listItems;
 
 
-            }
+            //}
             //SqlCommand cmd = new SqlCommand("select * from clients", sqlCon);
             //DataTable dt = new DataTable();
             //sqlCon.Open();
@@ -69,7 +69,7 @@ namespace WpfApp_1
             surname_txt.Clear();
             phone_txt.Clear();
             mail_txt.Clear();
-            date_txt.Clear();
+            birthNamePicker.SelectedDate = null;
         }
         private void ClearDataBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -80,7 +80,7 @@ namespace WpfApp_1
         {
             if (name_txt.Text == string.Empty || surname_txt.Text == string.Empty ||
                 phone_txt.Text == string.Empty || mail_txt.Text == string.Empty ||
-                date_txt.Text == string.Empty)
+                birthNamePicker.SelectedDate == null)
             {
                 MessageBox.Show("Wprowadz wszystkie dane!", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
@@ -100,7 +100,24 @@ namespace WpfApp_1
 
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
+            using (DbConn db = new DbConn())
+            {
+                int getId = (int)combobox.SelectedValue;
+                var client = db.clients.First(c => c.Id == getId);
+                if(client != null)
+                {
+                    client.FirstName = name_txt.Text;
+                    client.LastName = surname_txt.Text;
+                    client.Phone = phone_txt.Text;
+                    client.Email = mail_txt.Text;
+                    client.BirthDate = birthNamePicker.SelectedDate.Value;
+                    db.SaveChanges();
+                    
 
+                }
+                
+
+            }
         }
 
         private void combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -112,7 +129,9 @@ namespace WpfApp_1
                 var client = db.clients.First(c => c.Id == getId);
                 name_txt.Text = client.FirstName;
                 surname_txt.Text = client.LastName;
-                phone_txt.Text = client.Email;
+                phone_txt.Text = client.Phone;
+                mail_txt.Text = client.Email;
+                birthNamePicker.SelectedDate = client.BirthDate;
 
 
 
@@ -125,41 +144,20 @@ namespace WpfApp_1
 
         private void byleco()
         {
-            //List<client> list = new List<client>();
-            //using(DbConn db = new DbConn())
-            //{
-            //    var listItems = db.clients.ToList();
-            //    list = listItems;
-            //    combobox.ItemsSource = list;
-            //    combobox.DisplayMemberPath = "Id";
-            //    combobox.SelectedValuePath = "Id";
-            //}
+            List<client> finder = new List<client>();
+            using (DbConn db = new DbConn())
+            {
+                var listItems = db.clients.ToList();
+                finder = listItems;
+                combobox.ItemsSource = finder;
+                combobox.DisplayMemberPath = "Id";
+                combobox.SelectedValuePath = "Id";
+            }
 
 
             List<dataInDataGrid> list = new List<dataInDataGrid>();
             using (DbConn db = new DbConn())
             {
-
-
-
-                //var id_finder = (from clients in db.clients
-                //                 join booking in db.bookings on clients.Id equals booking.Id_client
-                //                 select new
-                //                 {
-                //                     Id = booking.Id,
-                //                     Imie = clients.FirstName,
-                //                     Nazwisko = clients.LastName,
-                //                     Telefon = clients.Phone,
-                //                     Email = clients.Email,
-                //                     DataUrodzenia = clients.BirthDate
-
-                //                 }).ToList();
-
-                //foreach (var data in id_finder)
-                //{
-                //    datagrid.Items.Add(new dataInDataGrid { Id = data.Id, Imie = data.Imie, Nazwisko = data.Nazwisko, Telefon = data.Telefon, Email = data.Email, DataUrodzenia = data.DataUrodzenia });
-
-                //}
                 var id_finder = (from booking in db.bookings
                                  join clients in db.clients on booking.Id_client equals clients.Id
                                  join details in db.details on booking.Id equals details.Id_book
@@ -199,6 +197,46 @@ namespace WpfApp_1
                 }
              
             }
+
+        }
+        
+    
+        private void checkpayment_Click(object sender, RoutedEventArgs e)
+        {
+            bool pay = false;
+            if(btnYes.IsChecked == true)
+            {
+                pay = true;
+                MessageBox.Show("Potwierdzono wpłatę", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else if(btnNo.IsChecked == true)
+            {
+                pay = false;
+            }
+            else
+            {
+                MessageBox.Show("Zaznacz przycisk", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            using (DbConn db = new DbConn())
+            {
+                int getId = (int)combobox.SelectedValue;
+                var payment = db.bookings.First(c => c.Id == getId);
+                if (payment != null)
+                {
+                    payment.Pay = pay;
+                    db.SaveChanges();
+                }
+
+            }
+        }
+
+        public void btnNo_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public void btnYes_Checked(object sender, RoutedEventArgs e)
+        {
 
         }
     }
