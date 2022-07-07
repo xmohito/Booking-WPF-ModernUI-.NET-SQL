@@ -79,7 +79,7 @@ namespace WpfApp_1.MVVM.View
             }
 
 
-            if (Name != "" || Surname != "" || Phone != "" || Email != "" || BirthDate != null || room_type != 0 || paymentMethod != 0 || CheckIn != null || CheckOut != null)
+            if (Name != "" && Surname != "" && Phone != "" && Email != "" && BirthDate != null && room_type != 0 && paymentMethod != 0 && CheckIn != null && CheckOut != null && (datePicker1.SelectedDate.Value < datePicker2.SelectedDate.Value))
             {
 
 
@@ -119,6 +119,11 @@ namespace WpfApp_1.MVVM.View
                 }
                 MessageBox.Show("Dokonano rezerwacji", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+
+            else if(datePicker1.SelectedDate.Value > datePicker2.SelectedDate.Value)
+            {
+                textBlock10.Text = "* Wybierz daty poprawnie";
+            }
             else
             {
                 ErrorLabel.Content = "Wypełnij wszystkie dane!";
@@ -140,7 +145,7 @@ namespace WpfApp_1.MVVM.View
             // This block sets the TextBlock to a sensible default if dates haven't been picked
             if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
             {
-                textBlock10.Text = "Wybierz daty";
+                //textBlock10.Text = "Wybierz daty";
                 return;
             }
 
@@ -207,7 +212,7 @@ namespace WpfApp_1.MVVM.View
         {
             if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
             {
-                textBlock10.Text = "Wybierz daty";
+                //textBlock10.Text = "Wybierz daty";
                 return;
             }
             DateTime start = datePicker1.SelectedDate.Value.Date;
