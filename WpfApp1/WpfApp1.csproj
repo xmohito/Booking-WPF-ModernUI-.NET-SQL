@@ -82,6 +82,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AskForm.xaml.cs">
+      <DependentUpon>AskForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="booking.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
@@ -105,6 +108,10 @@
     <Compile Include="user.cs">
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Page Include="AskForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

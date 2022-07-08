@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data;
 using WpfApp1;
+using System.Net.Mail;
 
 namespace WpfApp_1.MVVM.View
 {
@@ -34,6 +35,41 @@ namespace WpfApp_1.MVVM.View
 
         }
 
+    private void bookSendMail()
+        {
+            string body = "<h1>Witaj, " + txtName.Text + "<br/></h1>";
+            body += "Dziękujemy za dokonanie rezerwacji.<br/><br/>";
+            body += "Data zameldowania: " + datePicker1.SelectedDate.Value + "<br/>";
+            body += "Data wymeldowania: " + datePicker2.SelectedDate.Value + "<br/><br/>";
+            body += "Da zapłaty: " + showPrice.Text + " zł<br/>";
+
+            try
+            {
+                using (MailMessage mail = new MailMessage())
+                {
+                    mail.From = new MailAddress("vip.apartaments@interia.pl", "Vip Apartaments");
+                    mail.To.Add(txtMail.Text);
+                    mail.Subject = "Potwierdzenie dokonania rezerwacji";
+                    mail.Body = body;
+                    // mail.Body = "Witaj" + txtName.Text + "</br>" + "Data zameldowania:" + datePicker1.SelectedDate.Value + "</br>" + "Data wymeldowania" + datePicker2.SelectedDate.Value;
+                    mail.IsBodyHtml = true;
+
+                    using (SmtpClient smtp = new SmtpClient("poczta.interia.pl", 587))
+                    {
+                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartament12345");
+                        smtp.EnableSsl = true;
+                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                        smtp.Send(mail);
+                        //MessageBox.Show("Wyslano!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Potwierdzenie nie zostało wysłane na maila, ponieważ podano błędny mail", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+        }
 
 
 
@@ -79,9 +115,12 @@ namespace WpfApp_1.MVVM.View
             }
 
 
-            if (Name != "" && Surname != "" && Phone != "" && Email != "" && BirthDate != null && room_type != 0 && paymentMethod != 0 && CheckIn != null && CheckOut != null && (datePicker1.SelectedDate.Value < datePicker2.SelectedDate.Value))
+            if (Name != "" && Surname != "" && Phone != "" && Email != "" && BirthDate != null && room_type != 0 && paymentMethod != 0 && CheckIn != null && CheckOut != null && datePicker1.SelectedDate.Value != null && datePicker2.SelectedDate.Value != null && showPrice.Text != "- - - -")
             {
-
+                if (datePicker1.SelectedDate.Value > datePicker2.SelectedDate.Value)
+                {
+                    textBlock10.Text = "* Wybierz daty poprawnie";
+                }
 
                 using (DbConn db = new DbConn())
                 {
@@ -117,12 +156,8 @@ namespace WpfApp_1.MVVM.View
                     db.details.Add(insertedDetails);
                     db.SaveChanges();
                 }
+                bookSendMail();
                 MessageBox.Show("Dokonano rezerwacji", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
-
-            else if(datePicker1.SelectedDate.Value > datePicker2.SelectedDate.Value)
-            {
-                textBlock10.Text = "* Wybierz daty poprawnie";
             }
             else
             {
@@ -160,7 +195,7 @@ namespace WpfApp_1.MVVM.View
 
             if (daysCount > 0)
             {
-                textBlock10.Text = difference.TotalDays.ToString();
+                //textBlock10.Text = difference.TotalDays.ToString();
                 
             }
             else
@@ -256,6 +291,12 @@ namespace WpfApp_1.MVVM.View
         private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             checkPrice();
+        }
+
+        private void ask(object sender, RoutedEventArgs e)
+        {
+            AskForm dashboard = new AskForm();
+            dashboard.Show();
         }
     }
     }
