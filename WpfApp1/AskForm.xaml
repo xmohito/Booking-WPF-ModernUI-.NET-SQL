@@ -6,7 +6,186 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="AskForm" Height="600" Width="800"
-        WindowStyle="none">
+        WindowStyle="none"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True">
 
-   
+    <Border Background="#3B3B3B"
+            CornerRadius="20"
+            BorderBrush="#1C1C1C"
+            BorderThickness="1">
+        <Grid Initialized="Grid_Initialized">
+            <Button
+                    Margin="748,10,10,568"
+                    BorderThickness="0"
+                    Content="X"
+                    Foreground="White"
+                    FontSize="10"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="40"
+                    Height="20" RenderTransformOrigin="0.547,0.583" Click="Button_Click"
+                    >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#5C5C5C"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#BD4345"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="40"
+                                Height="20"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+
+
+
+            <!--send btn-->
+            <Button x:Name="SendBtn"
+                    Margin="687,548,21,10"
+                    BorderThickness="0"
+                    Content="Wyślij"
+                    Foreground="White"
+                    FontSize="12"
+                    Cursor="Hand" FontWeight="Bold" FontFamily="Segoe UI Semibold"
+                    Width="90"
+                    Height="40" RenderTransformOrigin="0.547,0.583">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#5C5C5C"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#456BA8"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Width="90"
+                                Height="40"
+                                Margin="0"
+                                CornerRadius="10"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center">
+
+                            </ContentPresenter>
+
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+
+
+
+            </Button>
+
+
+
+
+
+
+            <Border
+                Background="Gray"
+                CornerRadius="10" Margin="59,288,89,68"/>
+            <Border
+                Background="Gray"
+                Width="650"
+                Height="30 "
+                CornerRadius="10" Margin="59,236,89,332"/>
+            <Border
+                Background="Gray"
+                Height="30 "
+                CornerRadius="10" Margin="59,182,499,386"/>
+
+
+
+
+
+            <!--Text Boxes-->
+            <TextBox x:Name="sur_txt" 
+                     HorizontalAlignment="Left"
+                     Margin="138,240,0,0"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     Width="526" Height="24"
+                     FontWeight="Medium"
+                     Foreground="White"
+                     CaretBrush="White"
+                     BorderBrush="Transparent" 
+                     Background="Transparent"
+                     BorderThickness="0,0,0,2"
+                     VerticalContentAlignment="Center">
+            </TextBox>
+            <TextBox x:Name="context_txt" 
+                     HorizontalAlignment="Left"
+                     Margin="117,300,0,0"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     Width="547" Height="215"
+                     FontWeight="Medium"
+                     Foreground="White"
+                     CaretBrush="White"
+                     BorderBrush="Transparent" 
+                     Background="Transparent"
+                     BorderThickness="0,0,0,2">
+            </TextBox>
+            <TextBox x:Name="email_txt" 
+                     HorizontalAlignment="Left"
+                     Margin="138,186,0,0"
+                     TextWrapping="Wrap" 
+                     VerticalAlignment="Top"
+                     Width="149" Height="24"
+                     FontWeight="Medium"
+                     Foreground="White"
+                     CaretBrush="White"
+                     BorderBrush="Transparent" 
+                     Background="Transparent"
+                     BorderThickness="0,0,0,2"
+                     VerticalContentAlignment="Center">
+            </TextBox>
+            <Label Content="Temat: " HorizontalAlignment="Left" Margin="65,235,0,0" VerticalAlignment="Top"
+                   Foreground="White"
+                   FontWeight="SemiBold"
+                   FontSize="16"/>
+            <Label Content="Twój e-mail: " HorizontalAlignment="Left" Margin="65,185,0,0" VerticalAlignment="Top"
+                   Foreground="White"
+                   FontWeight="SemiBold"
+                   FontSize="11"/>
+            <Label Content="Treść: " HorizontalAlignment="Left" Margin="65,291,0,0" VerticalAlignment="Top"
+                Foreground="White"
+                FontWeight="SemiBold"
+                FontSize="16" RenderTransformOrigin="0.491,0.21"/>
+            <Label Content="Formularz kontaktowy" HorizontalAlignment="Left" Margin="220,40,0,0" VerticalAlignment="Top"
+                Foreground="White"
+                FontWeight="Light"
+                FontSize="40"/>
+
+
+
+
+
+        </Grid>
+
+
+
+    </Border>
+
+
 </Window>
