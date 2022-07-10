@@ -15,6 +15,7 @@ using System.Data.SqlClient;
 using System.Data;
 using WpfApp_1.MVVM.ViewModel;
 using WpfApp1;
+using System.Text.RegularExpressions;
 
 namespace WpfApp_1
 {
@@ -44,26 +45,7 @@ namespace WpfApp_1
 
         }
 
-        public void LoadGrid()
-        {
-
-
-            //using (DbConn db = new DbConn())
-            //{
-            //    //var listItems = db.clients.ToList();
-            //    //datagrid.ItemsSource = listItems;
-
-
-            //}
-            //SqlCommand cmd = new SqlCommand("select * from clients", sqlCon);
-            //DataTable dt = new DataTable();
-            //sqlCon.Open();
-            //SqlDataReader sdr = cmd.ExecuteReader();
-            //dt.Load(sdr);
-            //sqlCon.Close();
-            //datagrid.ItemsSource = dt.DefaultView;
-
-        }
+        
         public void clearData()
         {
             name_txt.Clear();
@@ -228,6 +210,7 @@ namespace WpfApp_1
         }
 
 
+
         private void checkpayment_Click(object sender, RoutedEventArgs e)
         {
             if (combobox.SelectedValue != null)
@@ -275,6 +258,12 @@ namespace WpfApp_1
         public void btnYes_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void phone_txt_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 

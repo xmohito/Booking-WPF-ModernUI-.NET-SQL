@@ -326,7 +326,8 @@
                      CaretBrush="White"  
                      BorderBrush="#456BA8"
                      Background="Transparent"
-                     BorderThickness="0,0,0,2">
+                     BorderThickness="0,0,0,2"
+                     MaxLength="49">
             </TextBox>
             <TextBox x:Name="surname_txt" 
                      HorizontalAlignment="Left"
@@ -339,7 +340,8 @@
                      CaretBrush="White"
                      BorderBrush="#456BA8"
                      Background="Transparent"
-                     BorderThickness="0,0,0,2">
+                     BorderThickness="0,0,0,2"
+                     MaxLength="49">
             </TextBox>
             <TextBox x:Name="phone_txt"
                      HorizontalAlignment="Left"
@@ -352,7 +354,9 @@
                      CaretBrush="White"
                      BorderBrush="#456BA8"
                      Background="Transparent"
-                     BorderThickness="0,0,0,2">
+                     BorderThickness="0,0,0,2"
+                     MaxLength="9"
+                     PreviewTextInput="phone_txt_PreviewTextInput">
             </TextBox>
 
             <TextBox x:Name="mail_txt"
@@ -366,7 +370,8 @@
                      CaretBrush="White"
                      BorderBrush="#456BA8"
                      Background="Transparent"
-                     BorderThickness="0,0,0,2">
+                     BorderThickness="0,0,0,2"
+                     MaxLength="49">
             </TextBox>
 
             <DatePicker x:Name="birthNamePicker"

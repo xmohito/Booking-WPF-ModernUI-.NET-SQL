@@ -118,6 +118,7 @@
 
                     <!--form-->
                     <TextBox x:Name="txtName"
+                     MaxLength="49"
                      Grid.Column="2"
                      Grid.Row="0"
                      FontSize="14"
@@ -131,6 +132,7 @@
                      VerticalContentAlignment="Center">
                     </TextBox>
                     <TextBox x:Name="txtSurname"
+                     MaxLength="49"
                      Grid.Column="2"
                      Grid.Row="1"
                      FontSize="14"
@@ -144,6 +146,7 @@
                      VerticalContentAlignment="Center">
                     </TextBox>
                     <TextBox x:Name="txtPhone"
+                     MaxLength="9"
                      Grid.Column="2"
                      Grid.Row="2"
                      FontSize="14"
@@ -154,9 +157,11 @@
                      BorderThickness="0,0,0,2" 
                              Padding="10,0,0,0"
                      Height="28"
-                     VerticalContentAlignment="Center">
+                     VerticalContentAlignment="Center"
+                     PreviewTextInput="txtPhone_PreviewTextInput">
                     </TextBox>
                     <TextBox x:Name="txtMail"
+                     MaxLength="49"
                      Grid.Column="2"
                      Grid.Row="3"
                      FontSize="14"
@@ -391,14 +396,15 @@
                Width="200" Grid.Column="1" Margin="75,423,175,-3">
 
         </Label>
-        <Label x:Name ="ageLabel" Content=""
+        <TextBlock x:Name ="ageLabel" Text=""
                Foreground="#F4717F"
+               Background="Transparent"
                Height="30"
                FontSize="10"
                FontWeight="SemiBold"
-               Width="200"  Margin="222,140,28,280" Grid.Column="1">
+               Width="200"  Margin="226,148,24,272" Grid.Column="1">
 
-        </Label>
+        </TextBlock>
 
 
 

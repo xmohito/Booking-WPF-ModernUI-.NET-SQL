@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Data;
 using WpfApp1;
 using System.Net.Mail;
+using System.Text.RegularExpressions;
 
 namespace WpfApp_1.MVVM.View
 {
@@ -62,7 +63,7 @@ namespace WpfApp_1.MVVM.View
                     }
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Potwierdzenie nie zostało wysłane na maila, ponieważ podano błędny mail", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
             }
@@ -73,11 +74,11 @@ namespace WpfApp_1.MVVM.View
             var ageInYears = GetDifferenceInYears(birthDate.SelectedDate.Value, DateTime.Today);
             if (ageInYears < 18)
             {
-                ageLabel.Content = "* nie masz ukończone 18 lat";
+                ageLabel.Text = "* nie masz ukończone 18 lat";
             }
             else
             {
-                ageLabel.Content = "";
+                ageLabel.Text = "";
             }
         }
 
@@ -144,14 +145,10 @@ namespace WpfApp_1.MVVM.View
             }
 
 
-           
 
-            if (!string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Surname) && !string.IsNullOrWhiteSpace(Phone) && !string.IsNullOrWhiteSpace(Email) && BirthDate != null && room_type != 0 && paymentMethod != 0 && CheckIn != null && CheckOut != null && datePicker1.SelectedDate.Value != null && datePicker2.SelectedDate.Value != null && showPrice.Text != "- - - -" && ageLabel.Content != "* nie masz ukończone 18 lat")
+            if (ageLabel.Text != "* nie masz ukończone 18 lat" && !string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Surname) && !string.IsNullOrWhiteSpace(Phone) && !string.IsNullOrWhiteSpace(Email) && BirthDate != null && room_type != 0 && paymentMethod != 0 && CheckIn != null && CheckOut != null && datePicker1.SelectedDate.Value != null && datePicker2.SelectedDate.Value != null && showPrice.Text != "- - - -")
             {
-                if (datePicker1.SelectedDate.Value > datePicker2.SelectedDate.Value)
-                {
-                    textBlock10.Text = "* Wybierz daty poprawnie";
-                }
+
 
                 using (DbConn db = new DbConn())
                 {
@@ -352,6 +349,13 @@ namespace WpfApp_1.MVVM.View
         {
             AskForm dashboard = new AskForm();
             dashboard.Show();
+        }
+
+        private void txtPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+
         }
     }
     }
