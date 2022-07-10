@@ -28,13 +28,14 @@ namespace WpfApp_1
             InitializeComponent();
             //LoadGrid();
             byleco();
+            comboBoxList();
         }
 
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            
+
         }
 
         private void Grid_Initialized(object sender, EventArgs e)
@@ -91,6 +92,7 @@ namespace WpfApp_1
         private void InsertBtn_Click(object sender, RoutedEventArgs e)
         {
 
+
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
@@ -98,41 +100,7 @@ namespace WpfApp_1
 
         }
 
-        private void UpdateBtn_Click(object sender, RoutedEventArgs e)
-        {
-            using (DbConn db = new DbConn())
-            {
-                if(combobox.SelectedValue != null && name_txt.Text !="" && surname_txt.Text != "" && phone_txt.Text != "" && mail_txt.Text != "" && birthNamePicker.SelectedDate.Value != null)
-                {
-                    int getId = (int)combobox.SelectedValue;
-                    var client = db.clients.First(c => c.Id == getId);
-                    if (client != null)
-                    {
-                        client.FirstName = name_txt.Text;
-                        client.LastName = surname_txt.Text;
-                        client.Phone = phone_txt.Text;
-                        client.Email = mail_txt.Text;
-                        client.BirthDate = birthNamePicker.SelectedDate.Value;
-                        db.SaveChanges();
-                        MessageBox.Show("Zmiany zostały wprowadzone", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
 
-
-                    }
-                }
-                else if(name_txt.Text == "" || surname_txt.Text == "" || phone_txt.Text != "" || mail_txt.Text == "" || birthNamePicker.SelectedDate.Value == null)
-                {
-                    MessageBox.Show("Wypełnij wszystkie pola", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-                else
-                {
-                    MessageBox.Show("Wybierz Id!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-              
-                
-                
-
-            }
-        }
 
         private void combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -140,36 +108,42 @@ namespace WpfApp_1
             using (DbConn db = new DbConn())
             {
                 int getId = (int)combobox.SelectedValue;
-                var client = db.clients.First(c => c.Id == getId);
-                name_txt.Text = client.FirstName;
-                surname_txt.Text = client.LastName;
-                phone_txt.Text = client.Phone;
-                mail_txt.Text = client.Email;
-                birthNamePicker.SelectedDate = client.BirthDate;
+                var query = db.clients.Join(db.bookings, c => c.Id, b => b.Id_client, (c, b) => new { c = c, b = b }).First(d => d.b.Id == getId);
+                name_txt.Text = query.c.FirstName;
+                surname_txt.Text = query.c.LastName;
+                phone_txt.Text = query.c.Phone;
+                mail_txt.Text = query.c.Email;
+                birthNamePicker.SelectedDate = query.c.BirthDate;
 
 
 
 
-                
+
 
             }
 
         }
-
-        private void byleco()
+        private void comboBoxList()
         {
-            List<client> finder = new List<client>();
+            List<booking> finder = new List<booking>();
             using (DbConn db = new DbConn())
             {
-                var listItems = db.clients.ToList();
+                var listItems = db.bookings.ToList();
                 finder = listItems;
                 combobox.ItemsSource = finder;
                 combobox.DisplayMemberPath = "Id";
                 combobox.SelectedValuePath = "Id";
             }
+        }
+        private void byleco()
+        {
+           
 
 
             List<dataInDataGrid> list = new List<dataInDataGrid>();
+
+            list.Clear();
+
             using (DbConn db = new DbConn())
             {
                 var id_finder = (from booking in db.bookings
@@ -178,46 +152,85 @@ namespace WpfApp_1
                                  join payments in db.payments on booking.Id_method_of_payment equals payments.Id
                                  select new
                                  {
-                                   Id = booking.Id,
-                                   Imie = clients.FirstName,
-                                   Nazwisko = clients.LastName,
-                                   Telefon = clients.Phone,
-                                   Email = clients.Email,
-                                   DataUrodzenia = clients.BirthDate,
-                                   Zameldowanie = details.DateFrom,
-                                   Wymeldowanie = details.DateTo,
-                                   RodzajPlatnosci = payments.payment_method,
-                                   DoZaplaty = booking.ToPay,
-                                   CzyZaplacil = booking.Pay
-                                   
+                                     Id = booking.Id,
+                                     Imie = clients.FirstName,
+                                     Nazwisko = clients.LastName,
+                                     Telefon = clients.Phone,
+                                     Email = clients.Email,
+                                     DataUrodzenia = clients.BirthDate,
+                                     Zameldowanie = details.DateFrom,
+                                     Wymeldowanie = details.DateTo,
+                                     RodzajPlatnosci = payments.payment_method,
+                                     DoZaplaty = booking.ToPay,
+                                     CzyZaplacil = booking.Pay
+
                                  }).ToList();
 
+                datagrid.Items.Clear();
                 foreach (var data in id_finder)
                 {
-                    datagrid.Items.Add(new dataInDataGrid {
-                                                           Id = data.Id,
-                                                           Imie = data.Imie,
-                                                           Nazwisko = data.Nazwisko,
-                                                           Telefon = data.Telefon,
-                                                           Email = data.Email,
-                                                           DataUrodzenia = data.DataUrodzenia,
-                                                           Zameldowanie = data.Zameldowanie,
-                                                           Wymeldowanie = data.Wymeldowanie,
-                                                           RodzajPlatnosci = data.RodzajPlatnosci,
-                                                           DoZaplaty = data.DoZaplaty,
-                                                           CzyZaplacil = data.CzyZaplacil
-                                                           });
+                    datagrid.Items.Add(new dataInDataGrid
+                    {
+                        Id = data.Id,
+                        Imie = data.Imie,
+                        Nazwisko = data.Nazwisko,
+                        Telefon = data.Telefon,
+                        Email = data.Email,
+                        DataUrodzenia = data.DataUrodzenia,
+                        Zameldowanie = data.Zameldowanie,
+                        Wymeldowanie = data.Wymeldowanie,
+                        RodzajPlatnosci = data.RodzajPlatnosci,
+                        DoZaplaty = data.DoZaplaty,
+                        CzyZaplacil = data.CzyZaplacil
+                    });
 
                 }
-             
+
             }
 
         }
-        
-    
+        private void UpdateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            using (DbConn db = new DbConn())
+            {
+                if (combobox.SelectedValue != null && !string.IsNullOrWhiteSpace(name_txt.Text) && !string.IsNullOrWhiteSpace(surname_txt.Text) && !string.IsNullOrWhiteSpace(phone_txt.Text) && !string.IsNullOrWhiteSpace(mail_txt.Text) && birthNamePicker.SelectedDate.Value != null)
+                {
+                    int getId = (int)combobox.SelectedValue;
+                    var ID_b = db.bookings.First(b => b.Id == getId);
+
+                    var query = db.clients.Join(db.bookings, c => c.Id, b => b.Id_client, (c, b) => new { c = c, b = b }).First(d => d.b.Id == getId);
+                    if (ID_b != null)
+                    {
+                        query.c.FirstName = name_txt.Text;
+                        query.c.LastName = surname_txt.Text;
+                        query.c.Phone = phone_txt.Text;
+                        query.c.Email = mail_txt.Text;
+                        query.c.BirthDate = birthNamePicker.SelectedDate.Value;
+                        db.SaveChanges();
+                        MessageBox.Show("Zmiany zostały wprowadzone", "Potwierdzenie", MessageBoxButton.OK, MessageBoxImage.Information);
+                        byleco();
+
+
+                    }
+                }
+                else if (!string.IsNullOrWhiteSpace(name_txt.Text) || !string.IsNullOrWhiteSpace(surname_txt.Text) || !string.IsNullOrWhiteSpace(phone_txt.Text) || !string.IsNullOrWhiteSpace(mail_txt.Text) || birthNamePicker.SelectedDate.Value == null)
+                {
+                    MessageBox.Show("Wypełnij wszystkie pola", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    MessageBox.Show("Wybierz Id!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+
+
+            }
+        }
+
+
         private void checkpayment_Click(object sender, RoutedEventArgs e)
         {
-            if(combobox.SelectedValue != null)
+            if (combobox.SelectedValue != null)
             {
                 bool pay = false;
                 if (btnYes.IsChecked == true)
@@ -242,6 +255,7 @@ namespace WpfApp_1
                     {
                         payment.Pay = pay;
                         db.SaveChanges();
+                        byleco();
                     }
 
                 }
@@ -250,7 +264,7 @@ namespace WpfApp_1
             {
                 MessageBox.Show("Wybierz Id!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            
+
         }
 
         public void btnNo_Checked(object sender, RoutedEventArgs e)
@@ -263,6 +277,8 @@ namespace WpfApp_1
 
         }
     }
+
+
 
     public class dataInDataGrid
     {

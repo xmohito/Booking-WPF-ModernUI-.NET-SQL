@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:fa="http://schemas.fontawesome.io/icons/" 
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
              Background="Transparent">
@@ -171,7 +172,8 @@
 
                     <DatePicker x:Name="birthDate" Grid.Row="4"
                                 Grid.Column="2"
-                                Margin="0,5,0,0">
+                                Margin="0,5,0,0"
+                                SelectedDateChanged="birthDate_SelectedDateChanged">
 
                         <DatePicker.Resources>
                             <Style TargetType="{x:Type DatePickerTextBox}">
@@ -189,7 +191,8 @@
                                 Grid.Row="5"
                                 FirstDayOfWeek="Monday"
                                 Margin="0,30,0,0"
-                                SelectedDateChanged="datePicker1_SelectedDateChanged">
+                                SelectedDateChanged="datePicker1_SelectedDateChanged"
+                                DisplayDateStart="{x:Static sys:DateTime.Today}">
 
                         <DatePicker.Resources>
                             <Style TargetType="{x:Type DatePickerTextBox}">
@@ -203,7 +206,8 @@
                                 Grid.Row="6"
                                 FirstDayOfWeek="Monday"
                                  Margin="0,10,0,22"
-                                SelectedDateChanged="datePicker1_SelectedDateChanged">
+                                SelectedDateChanged="datePicker1_SelectedDateChanged"
+                                DisplayDateStart="{x:Static sys:DateTime.Today}">
                         <DatePicker.Resources>
                             <Style TargetType="{x:Type DatePickerTextBox}">
                                 <Setter Property="Text" Value="Data wyjazdu" />
@@ -276,6 +280,12 @@
                            Height="20"
                            FontSize="16"
                            FontWeight="SemiBold" Margin="178,0,0,50" />
+            <TextBlock x:Name="zl"
+                           Text=""
+                           Height="20"
+                           FontSize="16"
+                           FontWeight="SemiBold" Margin="161,15,17,65" />
+            
 
 
 
@@ -375,9 +385,18 @@
         <RadioButton x:Name="btnByCash"  Checked ="payByCard" Height="15" Width="100"  GroupName="payment" IsChecked="False" Content="Kartą " FontWeight="SemiBold" Grid.Column="1" Margin="212,393,138,42"/>
 
         <Label x:Name ="ErrorLabel" Content=""
-               Foreground="Red"
+               Foreground="#F4717F"
                Height="30"
+               FontWeight="SemiBold"
                Width="200" Grid.Column="1" Margin="75,423,175,-3">
+
+        </Label>
+        <Label x:Name ="ageLabel" Content=""
+               Foreground="#F4717F"
+               Height="30"
+               FontSize="10"
+               FontWeight="SemiBold"
+               Width="200"  Margin="222,140,28,280" Grid.Column="1">
 
         </Label>
 

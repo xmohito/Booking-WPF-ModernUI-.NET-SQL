@@ -53,10 +53,14 @@ namespace WpfApp1
 
                     using (SmtpClient smtp = new SmtpClient("poczta.interia.pl", 587))
                     {
-                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartament12345");
+                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartament123456");
                         smtp.EnableSsl = true;
                         smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-                        MessageBox.Show("Twoje zapytanie zostało przesłane", "Wysłano", MessageBoxButton.OK, MessageBoxImage.Information);
+                        errorMsg.Content = "Twoje zapytanie zostało przesłane!";
+                        email_txt.Text = "";
+                        topic_txt.Text = "";
+                        context_txt.Text = "";
+                        
                         smtp.Send(mail);
                     }
                 }
@@ -70,7 +74,14 @@ namespace WpfApp1
 
         private void SendBtn_Click(object sender, RoutedEventArgs e)
         {
+            if(!string.IsNullOrWhiteSpace(context_txt.Text) && !string.IsNullOrWhiteSpace(email_txt.Text) && !string.IsNullOrWhiteSpace(topic_txt.Text))
+            {
             sendMail();
+            }
+            else
+            {
+                errorMsg.Content = "Wypełnij wszystkie pola";
+            }
         }
     }
 }

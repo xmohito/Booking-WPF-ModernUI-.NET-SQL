@@ -181,6 +181,10 @@
                    Margin="10,2,0,0" 
                    VerticalAlignment="Top"
                    Foreground="#828282"/>
+            <Label x:Name="errorMsg" Content="" HorizontalAlignment="Left" Margin="65,530,0,0" VerticalAlignment="Top"
+                Foreground="White"
+                FontWeight="SemiBold"
+                FontSize="11" RenderTransformOrigin="0.491,0.21"/>
 
 
 

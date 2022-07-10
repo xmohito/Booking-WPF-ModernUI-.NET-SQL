@@ -51,16 +51,14 @@ namespace WpfApp_1.MVVM.View
                     mail.To.Add(txtMail.Text);
                     mail.Subject = "Potwierdzenie dokonania rezerwacji";
                     mail.Body = body;
-                    // mail.Body = "Witaj" + txtName.Text + "</br>" + "Data zameldowania:" + datePicker1.SelectedDate.Value + "</br>" + "Data wymeldowania" + datePicker2.SelectedDate.Value;
                     mail.IsBodyHtml = true;
 
                     using (SmtpClient smtp = new SmtpClient("poczta.interia.pl", 587))
                     {
-                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartament12345");
+                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartament123456");
                         smtp.EnableSsl = true;
                         smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                         smtp.Send(mail);
-                        //MessageBox.Show("Wyslano!");
                     }
                 }
             }
@@ -70,11 +68,42 @@ namespace WpfApp_1.MVVM.View
             }
 
         }
+        private void birthDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var ageInYears = GetDifferenceInYears(birthDate.SelectedDate.Value, DateTime.Today);
+            if (ageInYears < 18)
+            {
+                ageLabel.Content = "* nie masz ukończone 18 lat";
+            }
+            else
+            {
+                ageLabel.Content = "";
+            }
+        }
+
+        int GetDifferenceInYears(DateTime startDate, DateTime endDate)
+        {
+            return (endDate.Year - startDate.Year - 1) +
+                (((endDate.Month > startDate.Month) ||
+                ((endDate.Month == startDate.Month) && (endDate.Day >= startDate.Day))) ? 1 : 0);
+        }
 
 
-
+        public void showZl()
+        { 
+            if (showPrice.Text != "- - - -")
+            {
+                zl.Text = "zł";
+            }
+            else
+            {
+                zl.Text = "";
+            }
+        }
         public void Button_Click(object sender, RoutedEventArgs e)
         {
+            showZl();
+            
             string Name = txtName.Text;
             string Surname = txtSurname.Text;
             string Phone = txtPhone.Text;
@@ -115,7 +144,9 @@ namespace WpfApp_1.MVVM.View
             }
 
 
-            if (Name != "" && Surname != "" && Phone != "" && Email != "" && BirthDate != null && room_type != 0 && paymentMethod != 0 && CheckIn != null && CheckOut != null && datePicker1.SelectedDate.Value != null && datePicker2.SelectedDate.Value != null && showPrice.Text != "- - - -")
+           
+
+            if (!string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Surname) && !string.IsNullOrWhiteSpace(Phone) && !string.IsNullOrWhiteSpace(Email) && BirthDate != null && room_type != 0 && paymentMethod != 0 && CheckIn != null && CheckOut != null && datePicker1.SelectedDate.Value != null && datePicker2.SelectedDate.Value != null && showPrice.Text != "- - - -" && ageLabel.Content != "* nie masz ukończone 18 lat")
             {
                 if (datePicker1.SelectedDate.Value > datePicker2.SelectedDate.Value)
                 {
@@ -217,18 +248,21 @@ namespace WpfApp_1.MVVM.View
         public void Standard_Checked(object sender, RoutedEventArgs e)
         {
             checkPrice();
+            showZl();
 
         }
 
         public void Superior_Checked(object sender, RoutedEventArgs e)
         {
             checkPrice();
+            showZl();
 
         }
 
         public void Deluxe_Checked(object sender, RoutedEventArgs e)
         {
             checkPrice();
+            showZl();
         }
 
        
@@ -245,6 +279,7 @@ namespace WpfApp_1.MVVM.View
 
         public void checkPrice()
         {
+            showZl();
             if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
             {
                 //textBlock10.Text = "Wybierz daty";
@@ -291,6 +326,26 @@ namespace WpfApp_1.MVVM.View
         private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             checkPrice();
+
+            if (datePicker1.SelectedDate.HasValue && datePicker2.SelectedDate.HasValue)
+            {
+                if (datePicker1.SelectedDate.Value > datePicker2.SelectedDate.Value)
+                {
+                    textBlock10.Text = "* Wybierz daty poprawnie";
+                    showZl();
+                }
+                else
+                {
+                    textBlock10.Text = "";
+                    showZl();
+                }
+            }
+            else
+            {
+                textBlock10.Text = "";
+                showZl();
+            }
+            
         }
 
         private void ask(object sender, RoutedEventArgs e)
