@@ -71,14 +71,25 @@ namespace WpfApp_1
             return true;
         }
 
-        private void InsertBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-
-        }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
+            using (DbConn db = new DbConn())
+            {
+                int getId = (int)combobox.SelectedValue;
+                var context = db.bookings.First(b => b.Id == getId);
+                var context1 = db.details.First(b => b.Id_book == getId);
+                db.bookings.Remove(context);
+                db.details.Remove(context1);
+                db.SaveChanges();
+                byleco();
+                combobox.SelectedValue = null;
+                comboBoxList();
+                clearData();
+
+            }
+
+
 
         }
 
@@ -89,21 +100,17 @@ namespace WpfApp_1
 
             using (DbConn db = new DbConn())
             {
-                int getId = (int)combobox.SelectedValue;
-                var query = db.clients.Join(db.bookings, c => c.Id, b => b.Id_client, (c, b) => new { c = c, b = b }).First(d => d.b.Id == getId);
-                name_txt.Text = query.c.FirstName;
-                surname_txt.Text = query.c.LastName;
-                phone_txt.Text = query.c.Phone;
-                mail_txt.Text = query.c.Email;
-                birthNamePicker.SelectedDate = query.c.BirthDate;
-
-
-
-
-
-
+                if (combobox.SelectedValue != null)
+                {
+                    int getId = (int)combobox.SelectedValue;
+                    var query = db.clients.Join(db.bookings, c => c.Id, b => b.Id_client, (c, b) => new { c = c, b = b }).First(d => d.b.Id == getId);
+                    name_txt.Text = query.c.FirstName;
+                    surname_txt.Text = query.c.LastName;
+                    phone_txt.Text = query.c.Phone;
+                    mail_txt.Text = query.c.Email;
+                    birthNamePicker.SelectedDate = query.c.BirthDate;
+                }
             }
-
         }
         private void comboBoxList()
         {
