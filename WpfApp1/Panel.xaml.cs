@@ -32,20 +32,26 @@ namespace WpfApp_1
             comboBoxList();
         }
 
-
+        /// <summary>
+        /// Nacisniecie przycisku powoduje zamkniecie aktualnego okna.
+        /// </summary>
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
 
         }
-
+        /// <summary>
+        /// Odpowiada za możliwość przesuwania aplikacji po ekranie w momencie przycisniecia lewego przycisku myszy
+        /// </summary>
         private void Grid_Initialized(object sender, EventArgs e)
         {
             this.MouseLeftButtonDown += delegate { DragMove(); };
 
         }
 
-        
+       /// <summary>
+       /// Czyści wszystkie pola z wprowadzonego tekstu
+       /// </summary>
         public void clearData()
         {
             name_txt.Clear();
@@ -58,20 +64,11 @@ namespace WpfApp_1
         {
             clearData();
         }
+ 
 
-        public bool isValid()
-        {
-            if (name_txt.Text == string.Empty || surname_txt.Text == string.Empty ||
-                phone_txt.Text == string.Empty || mail_txt.Text == string.Empty ||
-                birthNamePicker.SelectedDate == null)
-            {
-                MessageBox.Show("Wprowadz wszystkie dane!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            return true;
-        }
-
-
+        /// <summary>
+        /// Po wciśnieciu przycisku porównuje wybraną wartość w comboboxie z id rezerwacji w bazie danych i usuwa wybraną pozycje z bazy
+        /// </summary>
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
             using (DbConn db = new DbConn())
@@ -94,7 +91,9 @@ namespace WpfApp_1
         }
 
 
-
+        /// <summary>
+        /// W momencie wybrania wartości z comboboxa jest ona przyrównywana do id rezerwacji, na podstawie której pola w panelu zostają automatycznie wypełnione
+        /// </summary>
         private void combobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -112,6 +111,9 @@ namespace WpfApp_1
                 }
             }
         }
+        /// <summary>
+        /// Tworzy liste w comboboxie na podstawie utworzsonych rezerwacji
+        /// </summary>
         private void comboBoxList()
         {
             List<booking> finder = new List<booking>();
@@ -124,6 +126,10 @@ namespace WpfApp_1
                 combobox.SelectedValuePath = "Id";
             }
         }
+        /// <summary>
+        /// Odpowaida za inicjalizacje datagrida, łączy ze sobą kilka tabel z bazy danych i w logiczny sposób wyświetla wszystkie niezbędne informacje
+        /// potrzebne obsludze do zarzadzania rezerwacjami
+        /// </summary>
         private void byleco()
         {
            
@@ -178,6 +184,12 @@ namespace WpfApp_1
             }
 
         }
+        /// <summary>
+        /// Uzycie przycisku spowoduje sprawdzenie czy została wybrana wartosc z comboxa, w przeciwnym razie wyswietlany zostaje komunikat z bledem.
+        /// Następnie wartość wybrana z comboboxa zostaje powiazana z id rezerwacji z bazy danych i odpowiednio powiązane dane zostają automaycznie wpisane w pola tekstowe,
+        /// Na końcu program sprawdza czy wszystkie pola zostały wypełnione, jeżeli tak to wszystkie wpisane dane zostają poddane operacji update.
+        /// Natomiast jeżeli chociaż jedno pole bedzie puste wyświetli sie komunikat o niewypełnieniu pól.
+        /// </summary>
         private void UpdateBtn_Click(object sender, RoutedEventArgs e)
         {
             using (DbConn db = new DbConn())
@@ -217,7 +229,11 @@ namespace WpfApp_1
         }
 
 
-
+        /// <summary>
+        /// Funkacja na poststawie wybranego id z comboboxa powiązuje je z rezerwacją i mamy możliwość zarządzania statusem płatności.
+        /// Opcja TAK powoduje zatwierdzenie płatności
+        /// Opcja NIE powoduje anulowanie płatności
+        /// </summary>
         private void checkpayment_Click(object sender, RoutedEventArgs e)
         {
             if (combobox.SelectedValue != null)
@@ -266,7 +282,9 @@ namespace WpfApp_1
         {
 
         }
-
+        /// <summary>
+        /// Pozwala na wprowadzanie tylko numerycznych wartości do pola z numerem telefonu
+        /// </summary>
         private void phone_txt_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");

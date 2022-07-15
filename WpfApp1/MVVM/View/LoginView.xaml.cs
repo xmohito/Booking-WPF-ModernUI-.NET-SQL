@@ -28,10 +28,12 @@ namespace WpfApp_1.MVVM.View
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Po nacisnieciu przucisku program porównuje wprowadzone rekordy z rekordami w bazie danych i gdy się zgadzają następuje zalogowanie do apliakcji.
+        /// W przeciwnym razie na ekranie wyskakuje komunikat o wprowadzeniu złych danych
+        /// </summary>
         private void btnSubmit_Click(object sender, RoutedEventArgs e)
         {
-
 
             using (DbConn db = new DbConn())
             {

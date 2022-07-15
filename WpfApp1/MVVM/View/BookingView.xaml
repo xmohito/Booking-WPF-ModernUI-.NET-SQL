@@ -42,8 +42,7 @@
         <Border Grid.Column="1"
                 Padding="20"
                 Background="#ffffff"
-                CornerRadius="0 25 25 0"
-                MouseDown="Border_MouseDown">
+                CornerRadius="0 25 25 0">
             <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Height="198" Margin="0,20,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="68*"/>

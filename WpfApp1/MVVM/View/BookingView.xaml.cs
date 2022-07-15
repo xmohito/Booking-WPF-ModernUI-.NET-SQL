@@ -31,11 +31,11 @@ namespace WpfApp_1.MVVM.View
 
         }
 
-        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
-        {
 
-        }
-
+        /// <summary>
+        /// Wysyła mail z potwiedzeniem rezerwacji użytkowika, uwczesnie sprawdzając czy podany mail jest prawidłowy.
+        /// W treści maila znajdują się wybrane przez uzytkownika daty zameldowania oraz w podsumowaniu widnieje cena, którą należy zapłacić.
+        /// </summary>
     private void bookSendMail()
         {
             string body = "<h1>Witaj, " + txtName.Text + "<br/></h1>";
@@ -56,7 +56,7 @@ namespace WpfApp_1.MVVM.View
 
                     using (SmtpClient smtp = new SmtpClient("poczta.interia.pl", 587))
                     {
-                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartament123456");
+                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartament123");
                         smtp.EnableSsl = true;
                         smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                         smtp.Send(mail);
@@ -69,6 +69,10 @@ namespace WpfApp_1.MVVM.View
             }
 
         }
+        /// <summary>
+        /// Sprawdza czy różnica w latach miedzy dniem dzisiejszym, a dniem wybranym przez użytkownika jest wieksza niz 18 lat,
+        /// jeżeli nie to wyświetlony zostaje komunikat, że użytkownik nie ma ukończone 18 lat
+        /// </summary>
         private void birthDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             var ageInYears = GetDifferenceInYears(birthDate.SelectedDate.Value, DateTime.Today);
@@ -81,7 +85,9 @@ namespace WpfApp_1.MVVM.View
                 ageLabel.Text = "";
             }
         }
-
+        /// <summary>
+        /// Zlicza lata
+        /// </summary>
         int GetDifferenceInYears(DateTime startDate, DateTime endDate)
         {
             return (endDate.Year - startDate.Year - 1) +
@@ -89,7 +95,10 @@ namespace WpfApp_1.MVVM.View
                 ((endDate.Month == startDate.Month) && (endDate.Day >= startDate.Day))) ? 1 : 0);
         }
 
-
+        /// <summary>
+        /// Odpowiedzialne za pokazywanie 'zł' przy cenie.
+        /// Jeżeli cena nie jest akutalnie wyświetlana, napis 'zł' również się nie wyświetla
+        /// </summary>
         public void showZl()
         { 
             if (showPrice.Text != "- - - -")
@@ -101,6 +110,11 @@ namespace WpfApp_1.MVVM.View
                 zl.Text = "";
             }
         }
+        /// <summary>
+        /// Odpowiedzialne za całą logikę formularza, po wyzwoleniu przycisku sprawdza czy wypełnione są wszystkie pola, czy daty zameldowania zostały wybrane poprawnie oraz czy użytkownik ma ukończone 18lat.
+        /// Jeżeli wszystkie warunki zostaną spełnione to zatwierdzenie rezerwacji zostanie zakończone powodzeniem.
+        /// W zależności od zaistniałych nieścisłości zostanie wyświetlony odpowiedni komunikat z błędem, np. gdy daty zameldowania zostaną wybrane źle pojawi się komunikat o źle wybranych datach.
+        /// </summary>
         public void Button_Click(object sender, RoutedEventArgs e)
         {
             showZl();
@@ -144,12 +158,8 @@ namespace WpfApp_1.MVVM.View
                 ErrorLabel.Content = "Wypełnij wszystkie dane!";
             }
 
-
-
             if (ageLabel.Text != "* nie masz ukończone 18 lat" && !string.IsNullOrWhiteSpace(Name) && !string.IsNullOrWhiteSpace(Surname) && !string.IsNullOrWhiteSpace(Phone) && !string.IsNullOrWhiteSpace(Email) && BirthDate != null && room_type != 0 && paymentMethod != 0 && CheckIn != null && CheckOut != null && datePicker1.SelectedDate.Value != null && datePicker2.SelectedDate.Value != null && showPrice.Text != "- - - -")
             {
-
-
                 using (DbConn db = new DbConn())
                 {
                     var insertedClient = new client
@@ -162,7 +172,6 @@ namespace WpfApp_1.MVVM.View
                     };
                     db.clients.Add(insertedClient);
                     db.SaveChanges();
-
 
                     var insertedBook = new booking
                     {
@@ -191,29 +200,11 @@ namespace WpfApp_1.MVVM.View
             {
                 ErrorLabel.Content = "Wypełnij wszystkie dane!";
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // This block sets the TextBlock to a sensible default if dates haven't been picked
             if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
             {
-                //textBlock10.Text = "Wybierz daty";
+
                 return;
             }
-
-            // Because the nullable SelectedDate properties must have a value to reach this point, 
-            // we can safely reference them - otherwise, these statements throw, as you've discovered.
             DateTime start = datePicker1.SelectedDate.Value.Date;
             DateTime finish = datePicker2.SelectedDate.Value.Date;
             TimeSpan difference = finish.Subtract(start);
@@ -230,33 +221,24 @@ namespace WpfApp_1.MVVM.View
             {
                 textBlock10.Text = "* Wybierz daty poprawnie";
             }
-
-
-
-         
-
-
-
-
-
-
         }
 
-        public void Standard_Checked(object sender, RoutedEventArgs e)
+
+        private void Standard_Checked(object sender, RoutedEventArgs e)
         {
             checkPrice();
             showZl();
 
         }
 
-        public void Superior_Checked(object sender, RoutedEventArgs e)
+        private void Superior_Checked(object sender, RoutedEventArgs e)
         {
             checkPrice();
             showZl();
 
         }
 
-        public void Deluxe_Checked(object sender, RoutedEventArgs e)
+        private void Deluxe_Checked(object sender, RoutedEventArgs e)
         {
             checkPrice();
             showZl();
@@ -274,12 +256,17 @@ namespace WpfApp_1.MVVM.View
 
         }
 
+        /// <summary>
+        /// Odpwoiedzialne za obliczanie ceny.
+        /// W pierwszej kolejności sprawdzaje jest czy daty zameldowania są wybrane i czy są wybrane poprawnie
+        /// Następnie w zależności od wybranego standardu apartamentu i ilości dni wyliczana jest cena
+        /// </summary>
         public void checkPrice()
         {
             showZl();
             if (!datePicker1.SelectedDate.HasValue || !datePicker2.SelectedDate.HasValue)
             {
-                //textBlock10.Text = "Wybierz daty";
+               
                 return;
             }
             DateTime start = datePicker1.SelectedDate.Value.Date;
@@ -319,7 +306,9 @@ namespace WpfApp_1.MVVM.View
 
             
         }
-
+        /// <summary>
+        /// Sprawdza poprawność wybranych dat, oraz odpowiednie zastosowanie showZl()
+        /// </summary>
         private void datePicker1_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             checkPrice();
@@ -344,13 +333,17 @@ namespace WpfApp_1.MVVM.View
             }
             
         }
-
+        /// <summary>
+        /// Odpowiedzialne za otwarcie okna z formularzem kontaktowym.
+        /// </summary>
         private void ask(object sender, RoutedEventArgs e)
         {
             AskForm dashboard = new AskForm();
             dashboard.Show();
         }
-
+        /// <summary>
+        /// Ustawia możliwość wpisywania wyłącznie wartości numerycznych w polu numeru telefonu
+        /// </summary>
         private void txtPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");

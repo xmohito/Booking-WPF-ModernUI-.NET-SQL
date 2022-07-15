@@ -24,18 +24,27 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Nacisniecie przycisku powoduje zamknięcie aktualnego okna
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+        /// <summary>
+        /// Odpowiada za możliwość przesuwania aplikacji po ekranie w momencie przycisniecia lewego przycisku myszy
+        /// </summary>
         private void Grid_Initialized(object sender, EventArgs e)
         {
             this.MouseLeftButtonDown += delegate { DragMove(); };
 
         }
 
-
+        /// <summary>
+        /// Metoda jest odpowiedzialna za wysłanie adresu mail na podaną skrzynkę pocztową, treść zostaje podana w oknie aplikacji przez użytkownika.
+        /// Jeżeli email zostaje wysłany użytkownik dostaje informacje potwierdzającą wysłanie wiadomości.
+        /// W przypadku błędu zostaje wyświetlona informajca z błędem
+        /// </summary>
         private void sendMail()
         {
             string body = "<h3>Klient, " + email_txt.Text + " zadał zapytanie<br/><br/><br/></h3>";
@@ -53,7 +62,7 @@ namespace WpfApp1
 
                     using (SmtpClient smtp = new SmtpClient("poczta.interia.pl", 587))
                     {
-                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartament123456");
+                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartament123");
                         smtp.EnableSsl = true;
                         smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                         errorMsg.Content = "Twoje zapytanie zostało przesłane!";
@@ -71,7 +80,10 @@ namespace WpfApp1
             }
 
         }
-
+        /// <summary>
+        /// Wyzwolenie przycisku sprawdza czy wszystkie pola zostały wypełnione, w przeciwnym wypadku zwraca komunikat o wypełnieniu wszystkich pól.
+        /// Jeżeli pola zostaną wypełnioe zostaje użyta metoda sendMail()
+        /// </summary>
         private void SendBtn_Click(object sender, RoutedEventArgs e)
         {
             if(!string.IsNullOrWhiteSpace(context_txt.Text) && !string.IsNullOrWhiteSpace(email_txt.Text) && !string.IsNullOrWhiteSpace(topic_txt.Text))
