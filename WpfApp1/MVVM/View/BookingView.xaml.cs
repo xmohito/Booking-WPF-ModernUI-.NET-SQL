@@ -56,7 +56,7 @@ namespace WpfApp_1.MVVM.View
 
                     using (SmtpClient smtp = new SmtpClient("poczta.interia.pl", 587))
                     {
-                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartament123");
+                        smtp.Credentials = new System.Net.NetworkCredential("vip.apartaments@interia.pl", "vipapartaments123");
                         smtp.EnableSsl = true;
                         smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
                         smtp.Send(mail);
